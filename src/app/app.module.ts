@@ -1,3 +1,4 @@
+import { SdformatService } from './sdformat.service';
 import { AuthguardGuard } from './authguard.guard';
 import * as $ from 'jquery';
 import { BrowserModule } from '@angular/platform-browser';
@@ -59,7 +60,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     },{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }, FirebaseService, AuthguardGuard],
+  }, FirebaseService, AuthguardGuard, SdformatService],
   bootstrap: [AppComponent]
 })
 

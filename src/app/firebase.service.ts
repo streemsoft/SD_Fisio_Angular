@@ -10,7 +10,7 @@ export class FirebaseService {
   firebaseui:string;
   firebaseKey:string;
 
-  clienteKey:string;
+  clienteKey:string = '_false';
   rotaDestino:string = '1';
   
   config:any = {
@@ -28,11 +28,14 @@ export class FirebaseService {
      firebase.auth().onAuthStateChanged(x => this.authObservable(x));
   }
 
-  //CRUD
-  insertChild( path:string, child:any ):void{
+  getKey(path:string){
     var newKey = firebase.database().ref().child( this.firebaseKey + path ).push().key;
-    
-    firebase.database().ref( this.firebaseKey + path + newKey ).set(child);
+    return  newKey;
+  }
+
+  //CRUD
+  insertChild( path:string, child:any, newKey:string ):void{
+     firebase.database().ref( this.firebaseKey + path + newKey ).set(child);
   }
 
   updateChild( path:string, child:any ):void{
@@ -100,14 +103,14 @@ export class FirebaseService {
     }
   }
   
-  redefinirSenha(email:string):void{
+  redefinirSenha(email:string){
     var auth = firebase.auth();
     var emailAddress = email;
 
     auth.sendPasswordResetEmail(emailAddress).then(function() {
-      // Email sent.
+      return true;
     }).catch(function(error) {
-      // An error happened.
+      return false;
     });
 
 

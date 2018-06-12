@@ -1,3 +1,4 @@
+import { ToastModule } from 'ng2-toastr';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -17,7 +18,8 @@ import { NgModel, FormsModule } from '@angular/forms';
   imports: [ 
     CommonModule,
     FormsModule,
-    RouterModule.forChild(AuthenticationRoutes)
+    RouterModule.forChild(AuthenticationRoutes),
+    ToastModule.forRoot()
   ],
   declarations: [
     NotFoundComponent,

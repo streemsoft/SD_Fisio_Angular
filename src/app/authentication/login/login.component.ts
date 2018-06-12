@@ -1,5 +1,6 @@
+import { ToastsManager } from 'ng2-toastr';
 import { FirebaseService } from './../../firebase.service';
-import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,24 +13,41 @@ export class LoginComponent implements OnInit{
    email:string;
    senha:string;
 
-    constructor(private fire: FirebaseService) {}
+    constructor(private fire: FirebaseService, public toastr: ToastsManager,
+        public vcr: ViewContainerRef) {
+            this.toastr.setRootViewContainerRef(vcr);
+        }
 
     ngOnInit() {}
 
     botaoEntrar():void{
         if(this.email != null && this.senha != null && this.email != '' && this.senha !=''){
-            this.fire.loginEmail(this.email,this.senha).then(x =>console.log(x));
+            this.fire.loginEmail(this.email,this.senha).then(x =>{
+                if(x == false){
+                    this.toastr.warning('Email ou senha inválidos!', 'Atenção!');
+                }
+            });
             
         }else{
-            console.log('sem dados');
+            this.toastr.warning('Dados incompletos!', 'Atenção!');
+        }
+    }
+
+    recuperarSenha(){
+        if(this.email != null && this.email != ''){
+            if(!this.fire.redefinirSenha(this.email)){
+                this.toastr.success('Verifique seu email!', 'Atenção!');
+            }else{
+                this.toastr.warning('Email inválido!', 'Atenção!');
+            }
+        }else{
+            this.toastr.warning('Digite seu email!', 'Atenção!');
         }
     }
 
     sair(){
         this.fire.logout();
     }
-
-  
 
     onLoggedin() {
         localStorage.setItem('isLoggedin', 'true');

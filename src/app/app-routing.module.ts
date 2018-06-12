@@ -11,7 +11,8 @@ export const routes: Routes = [
     component: FullComponent,
     children: [
         { path: '', redirectTo: '/dashboard/dashboard1', pathMatch: 'full' },
-        { path: 'dashboard', loadChildren: './dashboards/dashboard.module#DashboardModule' }
+        { path: 'dashboard', loadChildren: './dashboards/dashboard.module#DashboardModule' },
+        { path: 'pacientes', loadChildren: './pacientes/pacientes.module#PacientesModule' }
     ]
 },
 {
