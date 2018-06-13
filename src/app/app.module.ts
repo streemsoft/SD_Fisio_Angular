@@ -1,3 +1,4 @@
+import { LocalDbService } from './local-db.service';
 import { SdformatService } from './sdformat.service';
 import { AuthguardGuard } from './authguard.guard';
 import * as $ from 'jquery';
@@ -25,6 +26,7 @@ import { AppComponent } from './app.component';
 import { SpinnerComponent } from './shared/spinner.component';
 import { FirebaseService } from './firebase.service';
 import {NgxMaskModule} from 'ngx-mask';
+import { LocalStorageModule } from '@ngx-pwa/local-storage';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -45,6 +47,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   imports: [
     CommonModule,
     BrowserModule,
+    LocalStorageModule,
     BrowserAnimationsModule,   
     FormsModule,
     HttpModule,
@@ -60,7 +63,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     },{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }, FirebaseService, AuthguardGuard, SdformatService],
+  }, FirebaseService, AuthguardGuard, SdformatService, LocalDbService],
   bootstrap: [AppComponent]
 })
 

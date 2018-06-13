@@ -1,3 +1,4 @@
+import { LocalDbService } from './local-db.service';
 import { FirebaseService } from './firebase.service';
 import { Component } from '@angular/core';
 
@@ -9,7 +10,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'SD Fisio';
 
-  constructor( private firebase : FirebaseService ){
+  constructor( private firebase : FirebaseService, private localDB : LocalDbService ){
     var sLogin = localStorage.getItem('AI65z454aSy5454AQ54Go1aa4HER36');
     var sAuth = localStorage.getItem('YusgfdloS8TKvhghg1-96sdgsdf_Sa_Rg');
     if ( sLogin != null ){
@@ -20,6 +21,7 @@ export class AppComponent {
     if ( sAuth != null ){
       this.firebase.firebaseKey = sAuth;
     }
+    this.localDB.getListItem();
   }
 
 }

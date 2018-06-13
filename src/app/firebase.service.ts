@@ -96,7 +96,6 @@ export class FirebaseService {
       localStorage.setItem('YusgfdloS8TKvhghg1','dsfo4dfTE34sfgOdffg');
       localStorage.setItem('YusgfdloS869s4Qxx5TKvhghg1','dsfo4dfTE34sfgOdffg');
       this.router.navigate(['/dashboard/dashboard1']);
-      console.log(user.uid);
       return true;
     } else {
       return false;
