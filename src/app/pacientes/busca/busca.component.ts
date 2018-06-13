@@ -1,3 +1,4 @@
+import { LocalDbService } from './../../local-db.service';
 import { PacSeletor } from './../pacseletor.model';
 import { Router } from '@angular/router';
 import { ToastsManager } from 'ng2-toastr';
@@ -15,11 +16,42 @@ export class BuscaComponent implements OnInit {
   listaPac:any[] = [];
   controle:boolean = false;
 
-  constructor(private fire : PacientesFireService, public toastr: ToastsManager, vcr: ViewContainerRef, private router : Router) {
+  constructor(private fire : PacientesFireService, 
+              public toastr: ToastsManager, 
+              vcr: ViewContainerRef, 
+              private router : Router,
+              private localDB : LocalDbService) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
   ngOnInit() {
+  }
+
+  buscaLocal(){
+    this.controle = false;
+     if(this.searchString != null && this.searchString != '' && this.searchString != ' '){
+        this.listaPac= [];
+        for(let i in this.localDB.pacientes){
+            var item = this.localDB.pacientes[i];
+            if(item.nome.indexOf(this.searchString.toUpperCase()) == 0){
+              var temp:PacSeletor = new PacSeletor();
+              temp.key = item.key;
+              temp.nome = item.nome;
+              temp.dt_nasc = new Date(Number(item.dt_nasc)).toLocaleDateString();
+              this.listaPac.push(temp);
+            }
+          }
+          if(this.listaPac.length > 0){
+            this.controle = true;
+          }else{
+            this.toastr.info('Sem registros!');
+            this.controle = false;
+          }
+
+          
+        }else{
+          this.toastr.warning('Dados incompletos!', 'Atenção!');
+        }
   }
 
   buscarPaciente(){
