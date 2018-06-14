@@ -40,11 +40,12 @@ export class LocalDbService {
   }
 
   getListItem(){
+    console.log('carregando dados');
     let control = true;
     let i = 0;
     let dados = [];
     while(control){
-      let result = this.getItem(String(i));
+      var result = this.getItem(String(i));
       if(result != null){
         dados.push(result);
         i = i + 1;
@@ -82,20 +83,17 @@ export class LocalDbService {
       }else{
           for(let i in obj){
               var item = obj[i];
-              var controle = 1;
+              var controle = 2;
                   for(let j=0; j<this.pacientes.length;j++){                    
                     if(item.key == this.pacientes[j].key){                  
                       this.insertItem( String(j), item );
                       this.pacientes[j] = item;
                       controle = 1;
                       break;
-                    }else{
-                      controle = this.pacientes.length + 1;
                     }
-
                   }
                   if(controle != 1){
-                    this.insertItem( String(controle), item );
+                    this.insertItem( String(this.pacientes.length + 1), item );
                     this.pacientes.push(item);
                   }
             
@@ -106,4 +104,6 @@ export class LocalDbService {
     localStorage.setItem('sdLocal', this.fire.versaoDBlocal);
   
   }
+
+
 }
