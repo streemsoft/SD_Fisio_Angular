@@ -2,6 +2,7 @@ import { ToastsManager } from 'ng2-toastr';
 import { FirebaseService } from './../../firebase.service';
 import { Component, OnInit, AfterViewInit, Input, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalDbService } from '../../local-db.service';
 
 @Component({
     selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit{
    senha:string;
 
     constructor(private fire: FirebaseService, public toastr: ToastsManager,
-        public vcr: ViewContainerRef) {
+        public vcr: ViewContainerRef, private localDB: LocalDbService) {
             this.toastr.setRootViewContainerRef(vcr);
         }
 
@@ -47,6 +48,10 @@ export class LoginComponent implements OnInit{
 
     sair(){
         this.fire.logout();
+        this.localDB.removerTudo();
+        this.fire.versaoDBlocal = '1';
+        localStorage.setItem('sdLocal', '1');
+        localStorage.setItem('sdLocalQT', '0');
     }
 
     onLoggedin() {

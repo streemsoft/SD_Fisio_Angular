@@ -30,6 +30,7 @@ export class AppComponent {
       this.firebase.versaoDBlocal = sAtualiza;
     }else {
       this.firebase.versaoDBlocal = '1';
+      this.localDB.atualizaDB();
     }
 
     //carrega db local

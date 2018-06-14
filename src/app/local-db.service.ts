@@ -1,6 +1,7 @@
 import { FirebaseService } from './firebase.service';
 import { Injectable } from '@angular/core';
 import { LocalStorage } from '@ngx-pwa/local-storage';
+import { PacSeletor } from './pacientes/pacseletor.model';
 
 @Injectable()
 export class LocalDbService {
@@ -40,21 +41,10 @@ export class LocalDbService {
   }
 
   getListItem(){
-    console.log('carregando dados');
-    let control = true;
-    let i = 0;
-    let dados = [];
-    while(control){
-      var result = this.getItem(String(i));
-      if(result != null){
-        dados.push(result);
-        i = i + 1;
-      }else{
-        control = false;
-      }
+    let qt = Number(localStorage.getItem('sdLocalQT'));
+    for( let i = 0; i < qt ; i++){
+      this.localStorage.getItem<PacSeletor>( String(i) ).subscribe(user => this.pacientes.push(user));
     }
-    this.pacientes = [];
-    this.pacientes = dados;
   }
 
   removeItem( id:string ){
@@ -72,7 +62,6 @@ export class LocalDbService {
       var obj = JSON.parse(json);
 
       if( this.pacientes.length == 0){
-        console.log('zero')
         let ct = 0;
         for(let i in obj){
             var item = obj[i];
@@ -93,16 +82,18 @@ export class LocalDbService {
                     }
                   }
                   if(controle != 1){
-                    this.insertItem( String(this.pacientes.length + 1), item );
+                    this.insertItem( String(this.pacientes.length), item );
                     this.pacientes.push(item);
                   }
             
           }
      }
+     this.fire.versaoDBlocal = new Date().getTime().toString();
+     localStorage.setItem('sdLocal', this.fire.versaoDBlocal);
+     localStorage.setItem('sdLocalQT', String(this.pacientes.length));
     });
-    this.fire.versaoDBlocal = new Date().getTime().toString();
-    localStorage.setItem('sdLocal', this.fire.versaoDBlocal);
-  
+    
+    
   }
 
 
