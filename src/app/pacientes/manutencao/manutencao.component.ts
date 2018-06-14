@@ -46,7 +46,7 @@ export class ManutencaoComponent implements OnInit {
         this.cliente.estado=this.cliente.estado.toUpperCase();
         this.cliente.complemento=this.cliente.complemento.toUpperCase();
         this.seletor.nome = this.seletor.nome.toUpperCase();
-
+        this.seletor.dt_cont = this.sdformat.getDataAtualizacao();
         this.fire.alterarPaciente(this.seletor,this.cliente);
         this.toastr.success('Salvo com sucesso!', 'Atenção!');
         this.alerta = '';
@@ -80,6 +80,7 @@ export class ManutencaoComponent implements OnInit {
       this.dtnasc = temp[2]+'-'+temp[1]+'-'+temp[0];
     }
   }
+  
   preencherCliente(x:any){
     if(x!=null){
       this.cliente.key = x.key;

@@ -21,4 +21,8 @@ export class SdformatService {
     return new Date(d[1]+'/'+d[2]+'/'+d[0]).getTime().toString();
   }
 
+  getDataAtualizacao(){
+    return new Date().getTime().toString();
+  }
+
 }

@@ -7,11 +7,11 @@ import * as firebase from "firebase";
 @Injectable()
 export class FirebaseService {
 
-  firebaseui:string;
-  firebaseKey:string;
-
-  clienteKey:string = '_false';
-  rotaDestino:string = '1';
+  firebaseui:string; //verifica login ativo
+  firebaseKey:string; //key do usuario
+  versaoDBlocal:string;
+  clienteKey:string = '_false'; //cliente em atendimento
+  rotaDestino:string = '1'; //rota de redirecionamento
   
   config:any = {
     apiKey: "AIzaSyAQGo1aa4HER36_YuloS8TKv1-96_Sa_Rg",
@@ -58,6 +58,13 @@ export class FirebaseService {
   selectInterval( path:string, child:string, fist:string, last:string ){
     var childs = firebase.database().ref( this.firebaseKey + path )
                          .orderByChild( child ).startAt( fist ).endAt( last )
+                                   .once('value').then(x => {return x});
+    return childs;
+  }
+
+  selectIntervalFist( path:string, child:string, fist:string ){
+    var childs = firebase.database().ref( this.firebaseKey + path )
+                         .orderByChild( child ).startAt( fist )
                                    .once('value').then(x => {return x});
     return childs;
   }

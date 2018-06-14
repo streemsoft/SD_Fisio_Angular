@@ -14,7 +14,8 @@ export class PacientesFireService {
       var _pacSel = {
         key: pacKey,
         nome: pacSel.nome.toUpperCase(),
-        dt_nasc : pacSel.dt_nasc
+        dt_nasc : pacSel.dt_nasc,
+        dt_cont : pacSel.dt_cont
       };
 
       this.fire.insertChild('/CLIENTES/GERAL/', _pacSel, pacKey);
@@ -73,6 +74,10 @@ export class PacientesFireService {
 
   setKeyClienteSelect(key:string){
     this.fire.clienteKey = key;
+  }
+
+  getVersaoDBlocal(){
+    return this.fire.versaoDBlocal;
   }
 
 }

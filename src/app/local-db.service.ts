@@ -1,3 +1,4 @@
+import { FirebaseService } from './firebase.service';
 import { Injectable } from '@angular/core';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 
@@ -6,7 +7,7 @@ export class LocalDbService {
 
   pacientes:any[] = [];
 
-  constructor(protected localStorage: LocalStorage) { }
+  constructor(protected localStorage: LocalStorage, private fire: FirebaseService) { }
 
   insertItem( id:string , child:any ){
     this.localStorage.setItem( id , child ).subscribe(() => {
@@ -63,4 +64,46 @@ export class LocalDbService {
     this.localStorage.clear().subscribe(() => {});
   }
 
+  atualizaDB(){
+    this.fire.selectIntervalFist( '/CLIENTES/GERAL/', 'dt_cont', this.fire.versaoDBlocal ).then(x=> {
+      var username = x.val();
+      var json = JSON.stringify(username);
+      var obj = JSON.parse(json);
+
+      if( this.pacientes.length == 0){
+        console.log('zero')
+        let ct = 0;
+        for(let i in obj){
+            var item = obj[i];
+            this.insertItem( String(ct), item );
+            this.pacientes.push(item);
+            ct = ct + 1; 
+        }
+      }else{
+          for(let i in obj){
+              var item = obj[i];
+              var controle = 1;
+                  for(let j=0; j<this.pacientes.length;j++){                    
+                    if(item.key == this.pacientes[j].key){                  
+                      this.insertItem( String(j), item );
+                      this.pacientes[j] = item;
+                      controle = 1;
+                      break;
+                    }else{
+                      controle = this.pacientes.length + 1;
+                    }
+
+                  }
+                  if(controle != 1){
+                    this.insertItem( String(controle), item );
+                    this.pacientes.push(item);
+                  }
+            
+          }
+     }
+    });
+    this.fire.versaoDBlocal = new Date().getTime().toString();
+    localStorage.setItem('sdLocal', this.fire.versaoDBlocal);
+  
+  }
 }

@@ -33,6 +33,7 @@ export class CadastroComponent implements OnInit {
       this.alerta = 'has-danger';
     }else{
         this.seletor.dt_nasc = this.sdformat.convertDateMili(this.dtnasc);
+        this.seletor.dt_cont = this.sdformat.getDataAtualizacao();
         this.fire.cadastrarPaciente(this.seletor,this.cliente);
         this.seletor = new PacSeletor();
         this.cliente = new Paciente();

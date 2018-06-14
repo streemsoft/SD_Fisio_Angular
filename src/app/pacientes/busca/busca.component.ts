@@ -25,6 +25,7 @@ export class BuscaComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.atualizaDBlocal();
   }
 
   buscaLocal(){
@@ -97,6 +98,10 @@ export class BuscaComponent implements OnInit {
       }
 
 
+  }
+
+  atualizaDBlocal(){
+    this.localDB.atualizaDB();
   }
 
 }
