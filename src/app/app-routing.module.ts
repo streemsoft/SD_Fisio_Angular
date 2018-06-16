@@ -13,7 +13,8 @@ export const routes: Routes = [
         { path: '', redirectTo: '/dashboard/dashboard1', pathMatch: 'full' },
         { path: 'dashboard', loadChildren: './dashboards/dashboard.module#DashboardModule' },
         { path: 'pacientes', loadChildren: './pacientes/pacientes.module#PacientesModule' },
-        { path: 'agendamento', loadChildren: './agendamento/agendamento.module#AgendamentoModule' }
+        { path: 'agendamento', loadChildren: './agendamento/agendamento.module#AgendamentoModule' },
+        { path: 'atendimento', loadChildren: './atendimento/atendimento.module#AtendimentoModule' }
     ]
 },
 {
