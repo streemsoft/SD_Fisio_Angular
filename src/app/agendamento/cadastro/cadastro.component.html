@@ -6,6 +6,7 @@
           <div class="row">                    
             <div class="col">
                     <div class="col-lg-6">
+                    <label class="control-label m-t-20">Paciente: {{pac.nome}}</label><br>
                     <label class="control-label m-t-20">Data do Atendimento</label>
                     
                         <div class="input-group mb-3">
@@ -20,13 +21,28 @@
           </div>
 
           <div class="row" >
+              <div class="col">
+              <div class="col-lg-6">
+                  <label class="control-label m-t-20">Horário</label>
+          
+                
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
+                        </div>
+                    </div>
+              </div>
+          </div>
+        </div>
+
+          <div class="row" >
             <div class="col">
                     <div class="bg-light p-20">
                             <div class="d-flex">
                                 <div class="align-self-center">
                                     <h3 class="m-b-0">Fila de Espera</h3></div>
                                 <div class="ml-auto align-self-center">
-                                        <button (click)="open2(content)" class="btn btn-info waves-effect waves-light m-t-10" type="button">Agendar</button></div>
+                                        <button (click)="cadastrarAgendamento()"class="btn btn-info waves-effect waves-light m-t-10" type="button">Agendar</button></div>
                             </div>
                         </div>
                         <div class="container">

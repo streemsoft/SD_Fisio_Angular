@@ -57,11 +57,11 @@ export class PacientesFireService {
   }
 
   selectPacSeletor(){
-    return this.fire.selectChild('/CLIENTES/GERAL/', this.fire.clienteKey);
+    return this.fire.selectChild('/CLIENTES/GERAL/', this.fire.clienteKey.key);
   }
 
   selectPacCliente(){
-    return this.fire.selectChild('/CLIENTES/DADOS/', this.fire.clienteKey);
+    return this.fire.selectChild('/CLIENTES/DADOS/', this.fire.clienteKey.key);
   }
 
   buscarPorNome(nome:string){
@@ -72,7 +72,7 @@ export class PacientesFireService {
     return this.fire.rotaDestino;
   }
 
-  setKeyClienteSelect(key:string){
+  setKeyClienteSelect(key:any){
     this.fire.clienteKey = key;
   }
 

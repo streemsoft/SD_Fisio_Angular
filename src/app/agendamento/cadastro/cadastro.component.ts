@@ -1,29 +1,23 @@
+import { Agendamento } from './../Agendamento.model';
 import { LocalDbService } from './../../local-db.service';
 import { SdformatService } from './../../sdformat.service';
-import { Agendamento } from './../Agendamento.model';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastsManager } from 'ng2-toastr';
 import { AgendamentoFireService } from './../agendamento-fire.service';
 import { PacSeletor } from './../../pacientes/pacseletor.model';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import {Observable} from 'rxjs';
-import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({
-  selector: 'app-consulta',
-  templateUrl: './consulta.component.html',
-  styleUrls: ['./consulta.component.css']
+  selector: 'app-cadastro',
+  templateUrl: './cadastro.component.html',
+  styleUrls: ['./cadastro.component.css']
 })
-export class ConsultaComponent implements OnInit {
+export class CadastroComponent implements OnInit {
 
   dataesc:any;
   listaAgen:any[] = [];
-  listaPac:any[] = [];
   controle:boolean = false;
-  controle2:boolean = false;
   closeResult: string;
-  searchString:string;
-  selecionado:boolean = false;
   pac:PacSeletor;
   time:any = {'hour': 7, 'minute': 0};
 
@@ -35,13 +29,8 @@ export class ConsultaComponent implements OnInit {
 
   ngOnInit() {
     this.buscarData();
-    this.pac = new PacSeletor();
+    this.pac = this.firea.getPaciemteSelecionado();
   }
-
-  pacescolhido(x:any){
-    this.pac = x;
-    this.selecionado = true;
- }
 
  cadastrarAgendamento():void{
 
@@ -67,8 +56,6 @@ export class ConsultaComponent implements OnInit {
       this.listaAgen.push(agen);
       
       this.toastr.success('Salvo com sucesso!', 'Atenção!');
-      this.selecionado = false;
-      this.pac = new PacSeletor();
       
   }else{
      this.toastr.warning('Horário Indisponível!', 'Atenção!');
@@ -130,39 +117,11 @@ ordenaLista(){
   return true;
 }
 
-dataHoje(){
+ dataHoje(){
     this.dataesc = new Date().toLocaleDateString();
     var temp = this.dataesc.split('/');
     this.dataesc = temp[2]+'-'+temp[1]+'-'+temp[0];
+ }
 
-}
-
-buscarPaciente(){
-  this.controle2 = false;
-   if(this.searchString != null && this.searchString != '' && this.searchString != ' ' && this.searchString.length >= 3){
-      this.listaPac= [];
-      
-        for(let i in this.localDB.pacientes){
-          var item = this.localDB.pacientes[i];
-          if(item.nome.indexOf(this.searchString.toUpperCase()) == 0){
-            var temp:PacSeletor = new PacSeletor();
-            temp.key = item.key;
-            temp.nome = item.nome;
-            temp.dt_nasc = new Date(Number(item.dt_nasc)).toLocaleDateString();
-            this.listaPac.push(temp);
-          }
-        }
-        if(this.listaPac.length > 0){
-          this.controle2 = true;
-        }else{
-          this.toastr.info('Sem registros!');
-          this.controle2 = false;
-        }
-        
-      }else{
-        this.toastr.warning('Dados incompletos!', 'Atenção!');
-      }
-
-}
 
 }

@@ -29,4 +29,8 @@ salvarAgendamento(ag:Agendamento){
   this.fire.insertChild( '/AGENDAMENTO/', _agen, newKey );
 }
 
+ getPaciemteSelecionado(){
+    return this.fire.clienteKey;
+ }
+
 }

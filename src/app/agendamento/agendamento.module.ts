@@ -10,6 +10,7 @@ import { ToastModule } from 'ng2-toastr';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import {NgxMaskModule} from 'ngx-mask';
 import { ConsultaComponent } from './consulta/consulta.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { ConsultaComponent } from './consulta/consulta.component';
     NgxDatatableModule,
     Ng2SmartTableModule
   ],
-  declarations: [ConsultaComponent],
+  declarations: [ConsultaComponent, CadastroComponent],
   providers:[AgendamentoFireService]
 })
 export class AgendamentoModule { }

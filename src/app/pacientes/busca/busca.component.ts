@@ -89,7 +89,7 @@ export class BuscaComponent implements OnInit {
 
   }
 
-  setPacKey(key:string){
+  setPacKey(key:any){
       this.fire.setKeyClienteSelect(key);
 
       switch(this.fire.rotaDestino()){
