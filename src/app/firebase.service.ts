@@ -69,6 +69,13 @@ export class FirebaseService {
     return childs;
   }
 
+  selectChildEqual(child:string, valor:string){
+    var lista = firebase.database().ref(this.firebaseKey+'/AGENDAMENTO/')
+                     .orderByChild(child).equalTo(valor).once('value').then(x => {return x});
+    
+    return lista;   
+  }
+
   //Auth  
   authObservable(user:any):void{
     if (user) {

@@ -12,7 +12,8 @@ export const routes: Routes = [
     children: [
         { path: '', redirectTo: '/dashboard/dashboard1', pathMatch: 'full' },
         { path: 'dashboard', loadChildren: './dashboards/dashboard.module#DashboardModule' },
-        { path: 'pacientes', loadChildren: './pacientes/pacientes.module#PacientesModule' }
+        { path: 'pacientes', loadChildren: './pacientes/pacientes.module#PacientesModule' },
+        { path: 'agendamento', loadChildren: './agendamento/agendamento.module#AgendamentoModule' }
     ]
 },
 {
