@@ -47,6 +47,39 @@ export class PacientesFireService {
       };
 
       this.fire.insertChild('/CLIENTES/DADOS/', _paciente, pacKey);
+
+      var _anamnese = {
+        key : pacKey,
+        perg1 : 'Não',
+        perg2 : 'Não',
+        perg3 : 'Não',
+        perg4 : 'Não',
+        perg5 : 'Não',
+        perg6 : 'Boa',
+        perg7 : 'Boa',
+        perg8 : 'Não',
+        perg9 : 'Não',
+        perg10 : 'Não',
+        perg11 : 'Não',
+        perg12 : 'Não',
+        perg13 : 'Não',
+        perg14 : 'Não',
+        perg15 : 'Não',
+        perg16 : 'Não',
+        perg17 : 'Não',
+        perg18 : 'Não',
+        perg19 : 'Não',
+        perg20 : 'Não',
+        perg21 : 'Não',
+        perg22 : 'Não',
+        perg23 : 'Não',
+        perg24 : 'Não',
+        perg25 : 'Não',
+        obs : '',
+        datar : this.sdformat.getDataAtualMili()
+      }
+      
+      this.fire.insertChild('/ANAMNESE/', _anamnese, pacKey);
   }
 
   alterarPaciente(pacSel:PacSeletor,pac:Paciente):void{

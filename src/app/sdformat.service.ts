@@ -15,6 +15,12 @@ export class SdformatService {
     return hj.getTime().toString();
   }
 
+  getDataAtualString(){
+    var result = new Date().toLocaleDateString();
+
+    return result;
+  }
+
   convertDateMili(_data:string){
     var d = _data.split('-');
 
@@ -23,6 +29,12 @@ export class SdformatService {
 
   getDataAtualizacao(){
     return new Date().getTime().toString();
+  }
+
+  convertMiliDate(_dt:string){
+    var result = new Date(Number(_dt)).toLocaleDateString();
+
+    return result;
   }
 
 }

@@ -51,26 +51,26 @@
                             </div>
                         </div>
             <div class="table-responsive"  [hidden]="!controle" > 
-                <table class="table table-hover earning-box">
-                    <thead>
-                        <tr>
-                            <th>Paciente</th>
-                            <th>Hora</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let pac of listaAgen; let i = index">
-                            
-                            <td>{{pac.cliente}}</td>
-                            
-                            <td><button type="button" class="btn btn-outline-info">{{pac.hora}}</button></td>
-                                                 
-                        </tr>                    
-                    </tbody>
-                </table>
+                        <table class="table table-hover earning-box">
+                            <thead>
+                                <tr>
+                                    <th>Paciente</th>
+                                    <th>Hora</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let pac of listaAgen; let i = index">
+                                    
+                                    <td>{{pac.cliente}}</td>
+                                    
+                                    <td><button type="button" class="btn btn-outline-info">{{pac.hora}}</button></td>
+                                                        
+                                </tr>                    
+                            </tbody>
+                       </table>
+                    </div>
+                </div>
             </div>
-         </div>
-    </div>
         
         </div>    
       </div>
