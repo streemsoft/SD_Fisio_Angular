@@ -14,7 +14,8 @@ export const routes: Routes = [
         { path: 'dashboard', loadChildren: './dashboards/dashboard.module#DashboardModule' },
         { path: 'pacientes', loadChildren: './pacientes/pacientes.module#PacientesModule' },
         { path: 'agendamento', loadChildren: './agendamento/agendamento.module#AgendamentoModule' },
-        { path: 'atendimento', loadChildren: './atendimento/atendimento.module#AtendimentoModule' }
+        { path: 'atendimento', loadChildren: './atendimento/atendimento.module#AtendimentoModule' },
+        { path: 'servicos', loadChildren: './servicos/servicos.module#ServicosModule' }
     ]
 },
 {

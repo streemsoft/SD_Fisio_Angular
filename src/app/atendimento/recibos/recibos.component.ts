@@ -1,3 +1,4 @@
+import { AtendimentoFireService } from './../atendimento-fire.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecibosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fire : AtendimentoFireService) { }
 
   ngOnInit() {
+  }
+
+  buscarRecibos(){
+    
   }
 
 }

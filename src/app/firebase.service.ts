@@ -10,7 +10,7 @@ export class FirebaseService {
   firebaseui:string; //verifica login ativo
   firebaseKey:string; //key do usuario
   versaoDBlocal:string;
-  clienteKey:any = '_false'; //cliente em atendimento
+  clienteKey:any = '_false'; //cliente em atendimento/completo os dados
   rotaDestino:string = '1'; //rota de redirecionamento
   
   config:any = {

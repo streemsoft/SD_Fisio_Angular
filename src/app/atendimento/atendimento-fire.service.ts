@@ -7,6 +7,7 @@ export class AtendimentoFireService {
 
   constructor(private fire: FirebaseService) { }
 
+  //Anamnese -----------------------------------------------
   buscaFicha(){
     return this.fire.selectChild('/ANAMNESE/', this.fire.clienteKey.key);
   }
@@ -16,5 +17,8 @@ export class AtendimentoFireService {
       this.fire.updateChild( '/ANAMNESE/', ficha );
     }
   }
+
+  //--------------------------------------------------------
+  
 
 }

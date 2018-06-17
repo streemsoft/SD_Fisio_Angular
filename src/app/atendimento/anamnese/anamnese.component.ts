@@ -34,6 +34,7 @@ export class AnamneseComponent implements OnInit {
    this.ficha.datar = this.sdformat.getDataAtualMili();
    this.fire.atualizaFicha(this.ficha);
    this.dat = this.sdformat.getDataAtualString();
+   this.toastr.success('Salvo com sucesso!', 'Atenção!');
  }
 
  preencherSeletor(x:any){
