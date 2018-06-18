@@ -1,14 +1,14 @@
+import { ServicoFireService } from './../servico-fire.service';
 import { Sessao } from './../sessoes/sessoes.model';
-import { PacModel } from './pac.model';
+import { PacModel } from './../pac/pac.model';
 import { Component, OnInit } from '@angular/core';
-import { ServicoFireService } from '../servico-fire.service';
 
 @Component({
-  selector: 'app-pac',
-  templateUrl: './pac.component.html',
-  styleUrls: ['./pac.component.css']
+  selector: 'app-pe',
+  templateUrl: './pe.component.html',
+  styleUrls: ['./pe.component.css']
 })
-export class PacComponent implements OnInit {
+export class PeComponent implements OnInit {
 
   ficha:PacModel;
   sessoes:Sessao[] = [];
@@ -26,7 +26,7 @@ export class PacComponent implements OnInit {
     var x:Sessao = new Sessao();
 
     x.key_cliente = this.fire.getClienteKey();
-    x.nome = 'Acne e Seborreia';
+    x.nome = 'Tratamendo de Estrias';
     x.status = 'Pendente';
     x.num = String((this.sessoes.length + 1));
     this.sessoes.push(x);
@@ -34,7 +34,6 @@ export class PacComponent implements OnInit {
   }
 
   salvarFicha(){
-    this.fire.salvarFichaPAC(this.ficha, this.sessoes,'Acne e Seborreia', '1');
+    this.fire.salvarFichaPAC(this.ficha, this.sessoes,'Tratamendo de Estrias', '2');
   }
-
 }

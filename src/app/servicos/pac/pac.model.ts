@@ -40,21 +40,21 @@ export class PacModel{
 
         this.key = '';
         this.perg1 = '';
-        this.perg2 = 'Seca';
-        this.perg3 = 'Abertos';
-        this.perg4 = 'Não';
-        this.perg5 = 'Não';
-        this.perg6 = 'Não';
-        this.perg7 = 'Não';
-        this.perg8 = 'Não';
-        this.perg9 = 'Não';
-        this.perg10 = 'Não';
-        this.perg11 = 'Não';
-        this.perg12 = 'Não';
-        this.perg13 = 'Não';
-        this.perg14 = 'Não';
+        this.perg2 = '';
+        this.perg3 = '';
+        this.perg4 = '';
+        this.perg5 = '';
+        this.perg6 = '';
+        this.perg7 = '';
+        this.perg8 = '';
+        this.perg9 = '';
+        this.perg10 = '';
+        this.perg11 = '';
+        this.perg12 = '';
+        this.perg13 = '';
+        this.perg14 = '';
 
-        this.perg1a = 'Não';
+        this.perg1a = '';
         this.perg2a = '';
         this.perg3a = '';
         this.perg4a = '';

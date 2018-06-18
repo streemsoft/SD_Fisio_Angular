@@ -9,6 +9,8 @@ import { ToastModule } from 'ng2-toastr';
 import { NgxMaskModule } from 'ngx-mask';
 import { PacComponent } from './pac/pac.component';
 import { SessoesComponent } from './sessoes/sessoes.component';
+import { PeComponent } from './pe/pe.component';
+import { PacoComponent } from './paco/paco.component';
 
 @NgModule({
   imports: [
@@ -19,7 +21,7 @@ import { SessoesComponent } from './sessoes/sessoes.component';
     ToastModule.forRoot(),
     NgxMaskModule.forRoot()
   ],
-  declarations: [PacComponent, SessoesComponent],
+  declarations: [PacComponent, SessoesComponent, PeComponent, PacoComponent],
   providers:[ServicoFireService]
 })
 export class ServicosModule { }
