@@ -33,6 +33,14 @@ export const ServicoRoutes: Routes = [
         urls: [{title: 'Avaliação',url: '/paco'},{title: 'PAC'}]
       },
       canActivate: [AuthguardGuard]
+    },{
+      path: 'orto',
+      component: PacoComponent,
+      data: {
+        title: 'Avaliação Ortopedia',
+        urls: [{title: 'Avaliação',url: '/orto'},{title: 'Ortopedia'}]
+      },
+      canActivate: [AuthguardGuard]
     }
     ]
   }
