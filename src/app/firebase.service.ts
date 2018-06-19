@@ -69,8 +69,8 @@ export class FirebaseService {
     return childs;
   }
 
-  selectChildEqual(child:string, valor:string){
-    var lista = firebase.database().ref(this.firebaseKey+'/AGENDAMENTO/')
+  selectChildEqual(path:string,child:string, valor:string){
+    var lista = firebase.database().ref(this.firebaseKey+path)
                      .orderByChild(child).equalTo(valor).once('value').then(x => {return x});
     
     return lista;   

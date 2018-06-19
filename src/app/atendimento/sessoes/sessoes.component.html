@@ -1,3 +1,32 @@
-<p>
-  sessoes works!
-</p>
+<br>
+              <div class="container">
+                <div [hidden]="controle" class="alert alert-info" role="alert">
+                    Nenhuma sessão pendente!
+                </div>
+             </div>
+              <div class="table-responsive"  [hidden]="!controle" > 
+                <table class="table table-hover earning-box">
+                    <thead>
+                        <tr>
+                            <th>Sessão</th>
+                            <th>Procedimento</th>
+                            <th>Situação</th>   
+                            <th></th>                         
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let pac of recibos; let i = index">
+                            
+                            <td>{{pac.num}}</td>
+                            <td>{{pac.nome}}</td>
+                            <td>{{pac.situacao}}</td>                            
+                            <td><button type="button" class="btn btn-outline-info">Ver</button></td>
+                            <td><button type="button" class="btn btn-outline-info">Ok</button></td>
+                            <td><button type="button" class="btn btn-outline-info">X</button></td>
+                                                
+                        </tr>                    
+                    </tbody>
+                </table>
+              </div>
+              
+              

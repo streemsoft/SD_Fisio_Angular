@@ -27,20 +27,29 @@ export class RecibosComponent implements OnInit {
 
           for(let i in obj){
             var item = obj[i];
-            var temp:Recibo = new Recibo();
-            temp.key = item.key;
-            temp.dt_cad = this.sdformat.convertMiliDate(item.dt_cad);
-            temp.fpag = item.fpag;
-            temp.key_fatura = item.key_fatura;
-            temp.vl_pago = item.vl_pago;
-            this.recibos.push(temp);
-          }       
-          if(this.recibos.length > 0){
-            this.recibos.reverse();
-            this.controle = true;
-          }else{            
-            this.controle = false;
-          }  
+            this.fire.reciboDetail(item.key).then(y=> {
+              var json2 = JSON.stringify(y);
+              var obj2 = JSON.parse(json2);
+          
+              var temp:Recibo = new Recibo();
+              temp.key = obj2.key;
+              temp.dt_cad = this.sdformat.convertMiliDate(obj2.dt_cad);
+              temp.fpag = obj2.fpag;
+              temp.key_fatura = obj2.key_fatura;
+              temp.vl_pago = obj2.vl_pago;
+              this.recibos.push(temp);
+              if(this.recibos.length > 0){
+                this.recibos.reverse();
+                this.controle = true;
+              }else{            
+                this.controle = false;
+              }       
+                
+                
+            });
+          }
+          
+            
       });
   }
 

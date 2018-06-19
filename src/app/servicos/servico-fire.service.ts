@@ -92,7 +92,7 @@ export class ServicoFireService {
         status: sessoes[i].status
       }
 
-      this.fire.insertChild('/SESSOES/CLIENTE/', _c, newSe);
+      this.fire.insertChild('/SESSOES/CLIENTE/'+this.fire.clienteKey.key+'/', _c, newSe);
     }
 
     

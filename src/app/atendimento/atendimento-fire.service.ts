@@ -22,7 +22,20 @@ export class AtendimentoFireService {
   
   //Recibos ------------------------------------------------
   buscaRecibos(){
-    return this.fire.selectChild('/RECIBOS/', this.fire.clienteKey.key);
+    return this.fire.selectChild('/RECIBOS/CLIENTE/', this.fire.clienteKey.key+'/');
+  }
+
+  reciboDetail(key:string){
+    return this.fire.selectChild('/RECIBOS/GERAL/', key);
+  }
+
+  //Sessoes -----------------------------------------------
+  buscaSessoes(){
+    return this.fire.selectChildEqual('/SESSOES/CLIENTE/'+this.fire.clienteKey.key+'/','status','Pendente');
+  }
+
+  buscaSessoesGeral(key:string){
+    return this.fire.selectChild('/SESSOES/GERAL/', key);
   }
 
 }

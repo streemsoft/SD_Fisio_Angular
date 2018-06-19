@@ -9,7 +9,7 @@ export class AgendamentoFireService {
   constructor(private fire : FirebaseService, private sdformat : SdformatService) { }
 
   buscarPorData(dt:string){
-     return this.fire.selectChildEqual( 'datae', dt );
+     return this.fire.selectChildEqual( '/AGENDAMENTO/','datae', dt );
   }
 
   
