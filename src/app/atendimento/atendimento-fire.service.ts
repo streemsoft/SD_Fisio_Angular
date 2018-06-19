@@ -20,5 +20,9 @@ export class AtendimentoFireService {
 
   //--------------------------------------------------------
   
+  //Recibos ------------------------------------------------
+  buscaRecibos(){
+    return this.fire.selectChild('/RECIBOS/', this.fire.clienteKey.key);
+  }
 
 }
