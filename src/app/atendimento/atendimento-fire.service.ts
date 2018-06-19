@@ -47,4 +47,10 @@ export class AtendimentoFireService {
     return this.fire.selectChild('/FATURAS/GERAL/', key);
   }
 
+  //Prontuarios -----------------------------------------------
+  buscarProntuarios(){
+    return this.fire.selectChildEqual('/PRONTUARIOS/GERAL/','key_cliente', this.fire.clienteKey.key);
+  }
+
+
 }
