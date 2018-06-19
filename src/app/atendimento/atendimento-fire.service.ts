@@ -38,4 +38,13 @@ export class AtendimentoFireService {
     return this.fire.selectChild('/SESSOES/GERAL/', key);
   }
 
+  //Faturas -----------------------------------------------
+  buscaFaturas(){
+    return this.fire.selectChild('/FATURAS/CLIENTE/', this.fire.clienteKey.key+'/');
+  }
+
+  faturaDetail(key:string){
+    return this.fire.selectChild('/FATURAS/GERAL/', key);
+  }
+
 }

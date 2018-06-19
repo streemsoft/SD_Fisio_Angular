@@ -27,22 +27,30 @@ export class SessoesComponent implements OnInit {
 
           for(let i in obj){
             var item = obj[i];
-            
-            var temp:Sessao = new Sessao();
-            temp.key = item.key;
-            temp.dt_cad = this.sdformat.convertMiliDate(item.dt_cad);
-            temp.key_cliente = item.key_cliente;
-            temp.key_pront = item.key_pront;
-            temp.nome = item.nome;
-            temp.num = item.num;
-            temp.status = item.status;
-            this.recibos.push(temp);
-          }       
-          if(this.recibos.length > 0){
-            this.controle = true;
-          }else{            
-            this.controle = false;
-          }  
+            this.fire.buscaSessoesGeral(item.key).then(y=> {
+              var json2 = JSON.stringify(y);
+              var obj2 = JSON.parse(json2);
+          
+              var temp:Sessao = new Sessao();
+              temp.key = obj2.key;
+              temp.dt_cad = this.sdformat.convertMiliDate(obj2.dt_cad);
+              temp.key_cliente = obj2.key_cliente;
+              temp.key_pront = obj2.key_pront;
+              temp.nome = obj2.nome;
+              temp.num = obj2.num;
+              temp.status = obj2.status;
+              this.recibos.push(temp);
+              if(this.recibos.length > 0){
+                this.recibos.reverse();
+                this.controle = true;
+              }else{            
+                this.controle = false;
+              }       
+                
+                
+            });
+          }
+           
       });
   }
 

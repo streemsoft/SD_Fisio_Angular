@@ -1,3 +1,34 @@
-<p>
-  faturas works!
-</p>
+<br>
+              <div class="container">
+                <div [hidden]="controle" class="alert alert-info" role="alert">
+                    Nenhuma fatura!
+                </div>
+             </div>
+              <div class="table-responsive"  [hidden]="!controle" > 
+                <table class="table table-hover earning-box">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Origem</th>
+                            <th>Situação</th> 
+                            <th>Total</th>
+                            <th>Pago</th>                                                                
+                            <th></th>                         
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let pac of recibos; let i = index">
+                            
+                            <td>{{pac.dt_criada}}</td>
+                            <td>{{pac.origem}}</td>
+                            <td>{{pac.status}}</td>  
+                            <td>{{pac.vl_total}}</td>                                                                                  
+                            <td>{{pac.pago}}</td>                                                        
+                            <td><button type="button" class="btn btn-outline-info">Ver</button></td>
+                                                
+                        </tr>                    
+                    </tbody>
+                </table>
+              </div>
+              
+              
