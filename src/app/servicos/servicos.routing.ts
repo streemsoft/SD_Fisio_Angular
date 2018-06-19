@@ -1,8 +1,10 @@
+import { PafComponent } from './paf/paf.component';
 import { PacoComponent } from './paco/paco.component';
 import { PacComponent } from './pac/pac.component';
 import { Routes } from '@angular/router';
 import { AuthguardGuard } from './../authguard.guard';
 import { PeComponent } from './pe/pe.component';
+import { OrtoComponent } from './orto/orto.component';
 
 
 export const ServicoRoutes: Routes = [
@@ -35,10 +37,18 @@ export const ServicoRoutes: Routes = [
       canActivate: [AuthguardGuard]
     },{
       path: 'orto',
-      component: PacoComponent,
+      component: OrtoComponent,
       data: {
-        title: 'Avaliação Ortopedia',
-        urls: [{title: 'Avaliação',url: '/orto'},{title: 'Ortopedia'}]
+        title: 'Avaliação Facial',
+        urls: [{title: 'Avaliação',url: '/paf'},{title: 'Facial'}]
+      },
+      canActivate: [AuthguardGuard]
+    },{
+      path: 'paf',
+      component: PafComponent,
+      data: {
+        title: 'Avaliação Facial',
+        urls: [{title: 'Avaliação',url: '/orto'},{title: 'Facial'}]
       },
       canActivate: [AuthguardGuard]
     }

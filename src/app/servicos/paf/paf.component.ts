@@ -4,15 +4,15 @@ import { PacModel } from './../pac/pac.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-paco',
-  templateUrl: './paco.component.html',
-  styleUrls: ['./paco.component.css']
+  selector: 'app-paf',
+  templateUrl: './paf.component.html',
+  styleUrls: ['./paf.component.css']
 })
-export class PacoComponent implements OnInit {
+export class PafComponent implements OnInit {
 
   ficha:PacModel;
+  proced:string = 'Tratamento Facial';
   sessoes:Sessao[] = [];
-  proced:string = 'Tratamento Corporal'; 
 
   constructor(private fire: ServicoFireService) {
     this.ficha = new PacModel('');
@@ -35,6 +35,6 @@ export class PacoComponent implements OnInit {
   }
 
   salvarFicha(){
-    this.fire.salvarFichaPAC(this.ficha, this.sessoes,'Tratamento Corporal', '3');
+    this.fire.salvarFichaPAC(this.ficha, this.sessoes,'Tratamento Facial', '5');
   }
 }

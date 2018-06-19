@@ -35,6 +35,16 @@ export class PacModel{
     perg16:string;
     perg17:string;
     perg18:string;
+    perg19:string;
+    perg20:string;
+    perg21:string;
+    perg22:string;
+    perg23:string;
+    perg24:string;
+    perg25:string;
+    perg26:string;
+    perg27:string;
+    perg28:string;
 
     constructor(dt:string){ 
 
@@ -73,6 +83,16 @@ export class PacModel{
         this.perg16 = '';
         this.perg17 = '';
         this.perg18 = '';
+        this.perg19 = '';
+        this.perg20 = '';
+        this.perg21 = '';
+        this.perg22 = '';
+        this.perg23 = '';
+        this.perg24 = '';
+        this.perg25 = '';
+        this.perg26 = '';
+        this.perg27 = '';
+        this.perg28 = '';
       
     }
 }

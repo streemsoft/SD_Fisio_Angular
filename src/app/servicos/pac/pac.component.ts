@@ -12,6 +12,7 @@ export class PacComponent implements OnInit {
 
   ficha:PacModel;
   sessoes:Sessao[] = [];
+  proced:string = 'Acne e Seborreia';
 
   constructor(private fire: ServicoFireService) {
     this.ficha = new PacModel('');
@@ -26,7 +27,7 @@ export class PacComponent implements OnInit {
     var x:Sessao = new Sessao();
 
     x.key_cliente = this.fire.getClienteKey();
-    x.nome = 'Acne e Seborreia';
+    x.nome = this.proced.toUpperCase();
     x.status = 'Pendente';
     x.num = String((this.sessoes.length + 1));
     this.sessoes.push(x);

@@ -12,6 +12,7 @@ export class PeComponent implements OnInit {
 
   ficha:PacModel;
   sessoes:Sessao[] = [];
+  proced:string = 'Tratamendo de Estrias';
 
   constructor(private fire: ServicoFireService) {
     this.ficha = new PacModel('');
@@ -26,7 +27,7 @@ export class PeComponent implements OnInit {
     var x:Sessao = new Sessao();
 
     x.key_cliente = this.fire.getClienteKey();
-    x.nome = 'Tratamendo de Estrias';
+    x.nome = this.proced.toUpperCase();
     x.status = 'Pendente';
     x.num = String((this.sessoes.length + 1));
     this.sessoes.push(x);

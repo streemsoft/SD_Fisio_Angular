@@ -6,28 +6,40 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
-       <div class="form-group {{alerta}}">
-           <label>Quando surgiu?</label>
-           <input class="form-control" type="text" [(ngModel)]="ficha.perg1" >
-        </div>
-    </div>
-    <div class="col-sm">
       <div class="form-group">
-          <label>Uso de Maquiagem</label>
+          <label>Queixa Principal</label>
           <div class="form-check">
-              <input class="form-check-input" [(ngModel)]="ficha.perg1a" type="radio" name="1" id="1" value="Sim" checked>
+              <input class="form-check-input" [(ngModel)]="ficha.perg1a" type="radio" name="1" id="1" value="Linhas" checked>
               <label class="form-check-label" for="1">
-                Sim
+                Linhas de expressão
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg1a" name="1" id="1a" value="Não">
+              <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg1a" name="1" id="1a" value="Manchas">
               <label class="form-check-label" for="1a">
-                Não
+                Manchas
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg1a" name="1" id="1b" value="Envelhecimento">
+              <label class="form-check-label" for="1b">
+                Envelhecimento
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg1a" name="1" id="1g" value="Outros">
+              <label class="form-check-label" for="1g">
+                Outros
               </label>
             </div>
       </div>
     </div>
+    <div class="col-sm">
+      <div class="form-group {{alerta}}">
+          <label>Observação</label>
+          <textarea rows="3" class="form-control" type="text" [(ngModel)]="ficha.perg1" ></textarea>
+       </div>
+   </div>
   </div>
 </div>
 <!--Fim-->
@@ -36,17 +48,23 @@
   <div class="row">
     <div class="col-sm">
       <div class="form-group">
-          <label>Seborreia</label>
+          <label>Histórico de Dermatite ou Câncer</label>
           <div class="form-check">
-              <input class="form-check-input" [(ngModel)]="ficha.perg2" type="radio" name="2" id="2" value="Pastosa" checked>
+              <input class="form-check-input" [(ngModel)]="ficha.perg2" type="radio" name="2" id="2" value="Não" checked>
               <label class="form-check-label" for="2">
-                Pastosa
+                Não
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg2" name="2" id="2a" value="Seca">
+              <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg2" name="2" id="2a" value="Sim, autorizado">
               <label class="form-check-label" for="2a">
-                Seca
+                Sim, autorizado pelo médico.
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg2" name="2" id="2b" value="Sim, não autorizado">
+              <label class="form-check-label" for="2b">
+                Sim, não autorizado pelo médico.
               </label>
             </div>
       </div>
@@ -65,17 +83,17 @@
   <div class="row">
     <div class="col-sm">
       <div class="form-group">
-          <label>Comedões</label>
+          <label>Cirurgia Plástica</label>
           <div class="form-check">
-              <input class="form-check-input" [(ngModel)]="ficha.perg3" type="radio" name="3" id="3" value="Abertos" checked>
+              <input class="form-check-input" [(ngModel)]="ficha.perg3" type="radio" name="3" id="3" value="Sim" checked>
               <label class="form-check-label" for="3">
-                Abertos
+                Sim
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg3" name="3" id="3a" value="Fechados">
+              <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg3" name="3" id="3a" value="Não">
               <label class="form-check-label" for="3a">
-                Fechados
+                Não
               </label>
             </div>
       </div>
@@ -94,17 +112,29 @@
   <div class="row">
     <div class="col-sm">
       <div class="form-group">
-          <label>Escoriações</label>
+          <label>Tipo de Pele</label>
           <div class="form-check">
-              <input class="form-check-input" [(ngModel)]="ficha.perg4" type="radio" name="4" id="4" value="Sim" checked>
+              <input class="form-check-input" [(ngModel)]="ficha.perg4" type="radio" name="4" id="4" value="Eudérmica" checked>
               <label class="form-check-label" for="4">
-                Sim
+                Eudérmica
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg4" name="4" id="4a" value="Não">
+              <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg4" name="4" id="4a" value="Lipídica">
               <label class="form-check-label" for="4a">
-                Não
+                Lipídica
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg4" name="4" id="4c" value="Alípica">
+              <label class="form-check-label" for="4c">
+                Alípica
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg4" name="4" id="4d" value="Mista">
+              <label class="form-check-label" for="4d">
+                Mista
               </label>
             </div>
       </div>
@@ -112,7 +142,7 @@
     <div class="col-sm">
       <div class="form-group {{alerta}}">
           <label>Observação</label>
-          <input class="form-control" type="text" [(ngModel)]="ficha.perg4a" >
+          <textarea rows="3" class="form-control" type="text" [(ngModel)]="ficha.perg4a" ></textarea>
        </div>
    </div>
   </div>
@@ -123,7 +153,7 @@
   <div class="row">
     <div class="col-sm">
       <div class="form-group">
-          <label>Pústulas</label>
+          <label>Sequela de Acne</label>
           <div class="form-check">
               <input class="form-check-input" [(ngModel)]="ficha.perg5" type="radio" name="5" id="5" value="Sim" checked>
               <label class="form-check-label" for="5">
@@ -152,7 +182,7 @@
   <div class="row">
     <div class="col-sm">
       <div class="form-group">
-          <label>Pápulas</label>
+          <label>Hidratação Cutânea</label>
           <div class="form-check">
               <input class="form-check-input" [(ngModel)]="ficha.perg6" type="radio" name="6" id="6" value="Sim" checked>
               <label class="form-check-label" for="6">
@@ -181,7 +211,7 @@
   <div class="row">
     <div class="col-sm">
       <div class="form-group">
-          <label>Nódulos</label>
+          <label>Histórico de Cicatrização</label>
           <div class="form-check">
               <input class="form-check-input" [(ngModel)]="ficha.perg7" type="radio" name="7" id="7" value="Sim" checked>
               <label class="form-check-label" for="7">
@@ -210,7 +240,7 @@
   <div class="row">
     <div class="col-sm">
       <div class="form-group">
-          <label>Cistos</label>
+          <label>Luz de Wood</label>
           <div class="form-check">
               <input class="form-check-input" [(ngModel)]="ficha.perg8" type="radio" name="8" id="8" value="Sim" checked>
               <label class="form-check-label" for="8">
@@ -239,7 +269,7 @@
   <div class="row">
     <div class="col-sm">
       <div class="form-group">
-          <label>Folículite</label>
+          <label>Pele Sensível</label>
           <div class="form-check">
               <input class="form-check-input" [(ngModel)]="ficha.perg9" type="radio" name="9" id="9" value="Sim" checked>
               <label class="form-check-label" for="9">
@@ -268,7 +298,7 @@
   <div class="row">
     <div class="col-sm">
       <div class="form-group">
-          <label>Pseudofoliculite</label>
+          <label>Envelhecimento</label>
           <div class="form-check">
               <input class="form-check-input" [(ngModel)]="ficha.perg10" type="radio" name="10" id="10" value="Sim" checked>
               <label class="form-check-label" for="10">
@@ -297,7 +327,7 @@
   <div class="row">
     <div class="col-sm">
       <div class="form-group">
-          <label>Milium</label>
+          <label>Linhas de Expressão</label>
           <div class="form-check">
               <input class="form-check-input" [(ngModel)]="ficha.perg11" type="radio" name="11" id="11" value="Sim" checked>
               <label class="form-check-label" for="11">
@@ -326,7 +356,7 @@
   <div class="row">
     <div class="col-sm">
       <div class="form-group">
-          <label>Xantelasma</label>
+          <label>Presença de Olheiras</label>
           <div class="form-check">
               <input class="form-check-input" [(ngModel)]="ficha.perg12" type="radio" name="12" id="12" value="Sim" checked>
               <label class="form-check-label" for="12">
@@ -355,7 +385,7 @@
   <div class="row">
     <div class="col-sm">
       <div class="form-group">
-          <label>Presença de acne no colo</label>
+          <label>Presença de Rugas</label>
           <div class="form-check">
               <input class="form-check-input" [(ngModel)]="ficha.perg13" type="radio" name="13" id="13" value="Sim" checked>
               <label class="form-check-label" for="13">
@@ -363,7 +393,7 @@
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg13" name="13" id="13a" value="Não">
+              <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg13" name="13" id="13" value="Não">
               <label class="form-check-label" for="13a">
                 Não
               </label>
@@ -373,47 +403,19 @@
     <div class="col-sm">
       <div class="form-group {{alerta}}">
           <label>Observação</label>
-          <input class="form-control" type="text" [(ngModel)]="ficha.perg13a" >
+          <textarea rows="3" class="form-control" type="text" [(ngModel)]="ficha.perg13a" ></textarea>
        </div>
    </div>
   </div>
 </div>
 <!--Fim-->
+
 <!--Linha-->
 <div class="container">
   <div class="row">
     <div class="col-sm">
       <div class="form-group">
-          <label>Presença de acne no dorso</label>
-          <div class="form-check">
-              <input class="form-check-input" [(ngModel)]="ficha.perg14" type="radio" name="14" id="14" value="Sim" checked>
-              <label class="form-check-label" for="14">
-                Sim
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg14" name="14" id="14a" value="Não">
-              <label class="form-check-label" for="14a">
-                Não
-              </label>
-            </div>
-      </div>
-    </div>
-    <div class="col-sm">
-      <div class="form-group {{alerta}}">
-          <label>Observação</label>
-          <input class="form-control" type="text" [(ngModel)]="ficha.perg14a" >
-       </div>
-   </div>
-  </div>
-</div>
-<!--Fim-->
-<!--Linha-->
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <div class="form-group">
-        <label>Caracteristicas da Acne</label>
+        <label>Caracteristicas Gerais</label>
         <textarea class="form-control" [(ngModel)]="ficha.perg15" rows="3"></textarea>
       </div>
     </div>

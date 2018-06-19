@@ -12,6 +12,7 @@ import { SessoesComponent } from './sessoes/sessoes.component';
 import { PeComponent } from './pe/pe.component';
 import { PacoComponent } from './paco/paco.component';
 import { OrtoComponent } from './orto/orto.component';
+import { PafComponent } from './paf/paf.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { OrtoComponent } from './orto/orto.component';
     ToastModule.forRoot(),
     NgxMaskModule.forRoot()
   ],
-  declarations: [PacComponent, SessoesComponent, PeComponent, PacoComponent, OrtoComponent],
+  declarations: [PacComponent, SessoesComponent, PeComponent, PacoComponent, OrtoComponent, PafComponent],
   providers:[ServicoFireService]
 })
 export class ServicosModule { }
