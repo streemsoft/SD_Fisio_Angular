@@ -25,13 +25,12 @@ export class FaturasComponent implements OnInit {
           this.fire.buscaFaturas().then(x=> {
           var json = JSON.stringify(x);
           var obj = JSON.parse(json);
-            console.log(obj)
+          
           for(let i in obj){
             var item = obj[i];
             this.fire.faturaDetail(item.key).then(y=> {
               var json2 = JSON.stringify(y);
               var obj2 = JSON.parse(json2);
-              console.log(obj2)
               var temp:Fatura = new Fatura();
               temp.key = obj2.key;
               temp.dt_criada = this.sdformat.convertMiliDate(obj2.dt_criada);

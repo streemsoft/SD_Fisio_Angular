@@ -15,9 +15,13 @@ export class OrtoComponent implements OnInit {
   proced:string = 'Tratamento Ortopedia';
 
   constructor(private fire: ServicoFireService) {
-    this.ficha = new PacModel('');
+    this.inicialiaTela();
 
    }
+   
+   inicialiaTela(){
+    this.ficha = this.fire.buscaFicha();
+  }
 
   ngOnInit() {
     this.incluirSessao();
@@ -37,4 +41,6 @@ export class OrtoComponent implements OnInit {
   salvarFicha(){
     this.fire.salvarFichaPAC(this.ficha, this.sessoes,'Tratamento Ortopedia', '4');
   }
+
+ 
 }

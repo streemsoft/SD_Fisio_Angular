@@ -12,6 +12,7 @@ export class FirebaseService {
   versaoDBlocal:string;
   clienteKey:any = '_false'; //cliente em atendimento/completo os dados
   rotaDestino:string = '1'; //rota de redirecionamento
+  fichaKey:any = '_false'; //cliente em atendimento/completo os dados
   
   config:any = {
     apiKey: "AIzaSyAQGo1aa4HER36_YuloS8TKv1-96_Sa_Rg",

@@ -1,3 +1,4 @@
+import { KeypacGuard } from './keypac.guard';
 import { LocalDbService } from './local-db.service';
 import { SdformatService } from './sdformat.service';
 import { AuthguardGuard } from './authguard.guard';
@@ -63,7 +64,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     },{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }, FirebaseService, AuthguardGuard, SdformatService, LocalDbService],
+  }, FirebaseService, AuthguardGuard, SdformatService, LocalDbService,KeypacGuard],
   bootstrap: [AppComponent]
 })
 

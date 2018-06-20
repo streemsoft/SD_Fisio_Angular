@@ -1,3 +1,4 @@
+import { KeypacGuard } from './../keypac.guard';
 import { FaturasComponent } from './faturas/faturas.component';
 import { SessoesComponent } from './sessoes/sessoes.component';
 import { AnamneseComponent } from './anamnese/anamnese.component';
@@ -28,7 +29,7 @@ export const AtendimentoRoutes: Routes = [
             title: 'Atendimento ao Paciente',
             urls: [{title: 'Paciente',url: '/prontuario'},{title: 'Prontuário'}]
           },
-          canActivate: [AuthguardGuard]
+          canActivate: [KeypacGuard]
        },{
           path: 'anamnese',
           component: AnamneseComponent,
@@ -36,7 +37,7 @@ export const AtendimentoRoutes: Routes = [
             title: 'Atendimento ao Paciente',
             urls: [{title: 'Paciente',url: '/anamnese'},{title: 'Anamnese'}]
           },
-          canActivate: [AuthguardGuard]
+          canActivate: [KeypacGuard]
        },{
           path: 'sessoes',
           component: SessoesComponent,
@@ -44,7 +45,7 @@ export const AtendimentoRoutes: Routes = [
             title: 'Atendimento ao Paciente',
             urls: [{title: 'Paciente',url: '/sessoes'},{title: 'Sessões'}]
           },
-          canActivate: [AuthguardGuard]
+          canActivate: [KeypacGuard]
         },{
             path: 'faturas',
             component: FaturasComponent,
@@ -52,7 +53,7 @@ export const AtendimentoRoutes: Routes = [
               title: 'Atendimento ao Paciente',
               urls: [{title: 'Paciente',url: '/faturas'},{title: 'Faturas'}]
             },
-            canActivate: [AuthguardGuard]
+            canActivate: [KeypacGuard]
          },{
             path: 'recibos',
             component: RecibosComponent,
@@ -60,10 +61,10 @@ export const AtendimentoRoutes: Routes = [
               title: 'Atendimento ao Paciente',
               urls: [{title: 'Paciente',url: '/recibos'},{title: 'Recibos'}]
             },
-            canActivate: [AuthguardGuard]
+            canActivate: [KeypacGuard]
          }
       ],
-      canActivate: [AuthguardGuard]
+      canActivate: [KeypacGuard]
     }
     ]
   }
