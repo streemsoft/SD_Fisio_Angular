@@ -136,9 +136,9 @@ export class PafComponent implements OnInit {
 
   salvarFicha(){
     if(this.ficha.key == ''){
-      this.ficha.key = this.fire.salvarFichaPAC(this.ficha, this.sessoes,'Tratamento Ortopedia', '4');
+      this.ficha.key = this.fire.salvarFichaPAC(this.ficha, this.sessoes,'Tratamento Facial', '5');
     }else{
-      this.fire.updateFichaPac(this.ficha, this.sessoes,'Tratamento Ortopedia', this.qtd);
+      this.fire.updateFichaPac(this.ficha, this.sessoes,'Tratamento Facial', this.qtd,'5');
       this.qtd = this.sessoes.length;
     }
   }

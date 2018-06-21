@@ -6,6 +6,7 @@ export class Sessao{
     status:string;
     nome:string;
     num:string;
+    ficha:string;
 
     constructor(){ 
         this.key = '';
@@ -15,5 +16,6 @@ export class Sessao{
         this.status = '';
         this.nome = '';
         this.num = '';
+        this.ficha = '';
     }
 }

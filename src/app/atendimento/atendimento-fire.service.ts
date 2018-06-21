@@ -1,3 +1,6 @@
+import { Fatura } from './faturas/fatura.model';
+import { Recibo } from './recibos/recibo.model';
+import { Sessao } from './../servicos/sessoes/sessoes.model';
 import { Anamnese } from './anamnese/anamnese.model';
 import { FirebaseService } from './../firebase.service';
 import { Injectable } from '@angular/core';
@@ -33,6 +36,25 @@ export class AtendimentoFireService {
     return this.fire.selectChild('/RECIBOS/GERAL/', key);
   }
 
+  inserirRecivo(x:Recibo){
+    var pKey = this.fire.getKey('/RECIBOS/GERAL/');
+    var _rec = {
+      key: pKey,
+      dt_cad: x.dt_cad,
+      fpag: x.fpag,
+      key_fatura: x.key_fatura,
+      vl_pago: x.vl_pago
+    }
+
+    var _r = {
+      key: pKey,
+      dt_cad: x.dt_cad
+    }
+
+    this.fire.insertChild('/RECIBOS/GERAL/',_rec, pKey);
+    this.fire.insertChild('/RECIBOS/CLIENTE/'+this.fire.clienteKey.key+'/',_r, pKey);
+  }
+
   //Sessoes -----------------------------------------------
   buscaSessoes(){
     return this.fire.selectChildEqual('/SESSOES/CLIENTE/'+this.fire.clienteKey.key+'/','status','Pendente');
@@ -42,6 +64,12 @@ export class AtendimentoFireService {
     return this.fire.selectChild('/SESSOES/GERAL/', key);
   }
 
+  cancelarSessão(ses:Sessao){
+    this.fire.updateChild('/SESSOES/GERAL/', ses);
+    this.fire.updateChild('/SESSOES/CLIENTE/'+this.fire.clienteKey.key+'/', ses);
+  }
+
+
   //Faturas -----------------------------------------------
   buscaFaturas(){
     return this.fire.selectChild('/FATURAS/CLIENTE/', this.fire.clienteKey.key+'/');
@@ -49,6 +77,28 @@ export class AtendimentoFireService {
 
   faturaDetail(key:string){
     return this.fire.selectChild('/FATURAS/GERAL/', key);
+  }
+
+  inserirFatura(x:Fatura){
+    var pKey = this.fire.getKey('/FATURAS/GERAL/');
+    var _rec = {
+          ket: pKey,
+          dt_criada: x.dt_criada,
+          origem: x.origem,
+          status: x.status,
+          vl_pago: x.vl_pago,
+          vl_total: x.vl_total,
+          key_cliente: this.fire.clienteKey.key
+    }
+
+    var _r = {
+      key: pKey,
+      dt_cad: x.dt_criada,
+      status: x.status
+    }
+
+    this.fire.insertChild('/FATURAS/GERAL/',_rec, pKey);
+    this.fire.insertChild('/FATURAS/CLIENTE/'+this.fire.clienteKey.key+'/',_r, pKey);
   }
 
   //Prontuarios -----------------------------------------------

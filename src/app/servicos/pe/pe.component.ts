@@ -136,9 +136,9 @@ export class PeComponent implements OnInit {
 
   salvarFicha(){
     if(this.ficha.key == ''){
-      this.ficha.key = this.fire.salvarFichaPAC(this.ficha, this.sessoes,'Tratamento Ortopedia', '4');
+      this.ficha.key = this.fire.salvarFichaPAC(this.ficha, this.sessoes,'Tratamendo de Estrias', '2');
     }else{
-      this.fire.updateFichaPac(this.ficha, this.sessoes,'Tratamento Ortopedia', this.qtd);
+      this.fire.updateFichaPac(this.ficha, this.sessoes,'Tratamendo de Estrias', this.qtd, '2');
       this.qtd = this.sessoes.length;
     }
   }

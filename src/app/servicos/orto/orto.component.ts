@@ -138,7 +138,7 @@ export class OrtoComponent implements OnInit {
     if(this.ficha.key == ''){
       this.ficha.key = this.fire.salvarFichaPAC(this.ficha, this.sessoes,'Tratamento Ortopedia', '4');
     }else{
-      this.fire.updateFichaPac(this.ficha, this.sessoes,'Tratamento Ortopedia', this.qtd);
+      this.fire.updateFichaPac(this.ficha, this.sessoes,'Tratamento Ortopedia', this.qtd,'4');
       this.qtd = this.sessoes.length;
     }
   }

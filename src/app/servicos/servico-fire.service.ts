@@ -82,7 +82,8 @@ export class ServicoFireService {
         dt_cad: sessoes[i].dt_cad,
         status: sessoes[i].status,
         nome: sessoes[i].nome,
-        num: sessoes[i].num
+        num: sessoes[i].num,
+        ficha: tipo
       }
 
       this.fire.insertChild('/SESSOES/GERAL/', _s, newSe);
@@ -101,7 +102,7 @@ export class ServicoFireService {
 
   }
 
-  updateFichaPac(ficha:PacModel, sessoes:Sessao[], nome:string, novaSessoes:any){
+  updateFichaPac(ficha:PacModel, sessoes:Sessao[], nome:string, novaSessoes:any, tipo:string){
         
       var _ficha = {
         key : ficha.key,
@@ -152,7 +153,8 @@ export class ServicoFireService {
         dt_cad: sessoes[i].dt_cad,
         status: sessoes[i].status,
         nome: sessoes[i].nome,
-        num: sessoes[i].num
+        num: sessoes[i].num,
+        ficha: tipo
       }
 
       this.fire.insertChild('/SESSOES/GERAL/', _s, newSe);

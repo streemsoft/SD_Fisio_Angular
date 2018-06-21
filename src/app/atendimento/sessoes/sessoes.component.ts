@@ -1,8 +1,12 @@
+import { Fatura } from './../faturas/fatura.model';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Sessao } from './../../servicos/sessoes/sessoes.model';
 import { SdformatService } from './../../sdformat.service';
 import { AtendimentoFireService } from './../atendimento-fire.service';
 import { SessaoCli } from './../../servicos/sessoes/sessao-cli.model';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Recibo } from '../recibos/recibo.model';
 
 @Component({
   selector: 'app-sessoes',
@@ -13,8 +17,11 @@ export class SessoesComponent implements OnInit {
 
   recibos:Sessao[] = [];
   controle:boolean = false;
+  valor:any = 0.00;
+  fpag:string = 'Dinheiro';
+  fat:Sessao;
 
-  constructor(private fire : AtendimentoFireService, private sdformat: SdformatService) { }
+  constructor(private fire : AtendimentoFireService, private sdformat: SdformatService, private modalService: NgbModal, private routes: Router) { }
 
   ngOnInit() {
     this.buscarRecibos();
@@ -39,6 +46,7 @@ export class SessoesComponent implements OnInit {
               temp.nome = obj2.nome;
               temp.num = obj2.num;
               temp.status = obj2.status;
+              temp.ficha = obj2.ficha;
               this.recibos.push(temp);
               if(this.recibos.length > 0){
                 this.recibos.reverse();
@@ -52,6 +60,102 @@ export class SessoesComponent implements OnInit {
           }
            
       });
+  }
+
+  open2(content, x:Sessao) { 
+    this.fat = x;
+    console.log(this.fat)
+    this.modalService.open(content).result.then((result) => {
+      //this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+ 
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
+  redirect(id:any){
+    switch(id.ficha){
+      case '1':
+          this.fire.setProntuarioKey(id.key_pront)
+          this.routes.navigate(['/servicos/pac']); 
+          break;
+      case '2':
+          this.fire.setProntuarioKey(id.key_pront)
+          this.routes.navigate(['/servicos/pe']); 
+          break;
+      case '3':
+          this.fire.setProntuarioKey(id.key_pront)
+          this.routes.navigate(['/servicos/paco']); 
+          break;
+      case '4':
+          this.fire.setProntuarioKey(id.key_pront)
+          this.routes.navigate(['/servicos/orto']); 
+          break;
+      case '5':
+          this.fire.setProntuarioKey(id.key_pront)
+          this.routes.navigate(['/servicos/paf']); 
+          break;
+    }
+  }
+
+  cancelar(ses:Sessao){
+    if(ses.status == 'Pendente'){
+      var x = ses;
+      x.status = 'Cancelada';
+      x.dt_cad = this.sdformat.getDataAtualString();
+      this.fire.cancelarSessão(x);
+    }else{
+
+    }
+  }
+
+  pagar(){
+
+    if(this.fat.status == 'Pendente'){
+      if(this.valor != null && this.valor != '' && this.valor != ' '){
+        if(this.fpag == 'Fatura'){
+          var a:Fatura = new Fatura();
+          a.dt_criada = this.sdformat.getDataAtualMili();
+          a.origem = 'Sessão';
+          a.status = 'Aberta';
+          a.vl_pago = '0.00';
+          a.vl_total = this.valor;
+          var xx = this.fat;
+          xx.status = 'Realizada';
+          xx.dt_cad = this.sdformat.getDataAtualString();
+          this.fire.cancelarSessão(xx);
+          this.fire.inserirFatura(a);
+          
+
+        }else{
+          var x:Recibo = new Recibo();
+          x.dt_cad = this.sdformat.getDataAtualMili();
+          x.fpag = this.fpag;
+          x.key_fatura = this.fat.key;
+          x.vl_pago = String(this.valor);
+          var xx = this.fat;
+          xx.status = 'Realizada';
+          xx.dt_cad = this.sdformat.getDataAtualString();
+          this.fire.cancelarSessão(xx);
+          this.fire.inserirRecivo(x);
+        }
+      }else{
+        //valor
+      }
+      
+    }else{
+
+    }
+
   }
 
 }

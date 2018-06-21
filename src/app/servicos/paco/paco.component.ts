@@ -136,9 +136,9 @@ export class PacoComponent implements OnInit {
 
   salvarFicha(){
     if(this.ficha.key == ''){
-      this.ficha.key = this.fire.salvarFichaPAC(this.ficha, this.sessoes,'Tratamento Ortopedia', '4');
+      this.ficha.key = this.fire.salvarFichaPAC(this.ficha, this.sessoes,'Tratamento Corporal', '3');
     }else{
-      this.fire.updateFichaPac(this.ficha, this.sessoes,'Tratamento Ortopedia', this.qtd);
+      this.fire.updateFichaPac(this.ficha, this.sessoes,'Tratamento Ortopedia', this.qtd,'3');
       this.qtd = this.sessoes.length;
     }
   }
