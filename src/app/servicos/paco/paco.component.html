@@ -57,14 +57,14 @@
         <div class="form-group">
             <label>Tratamento Corporal Anterior?</label>
             <div class="form-check">
-                <input class="form-check-input" [(ngModel)]="ficha.perg2" type="radio" name="2" id="2" value="Sim" checked>
-                <label class="form-check-label" for="2">
+                <input class="form-check-input" [(ngModel)]="ficha.perg1" type="radio" name="1" id="1" value="Sim" checked>
+                <label class="form-check-label" for="1">
                   Sim
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg2" name="2" id="2a" value="Não">
-                <label class="form-check-label" for="2a">
+                <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg1" name="1" id="1a" value="Não">
+                <label class="form-check-label" for="1a">
                   Não
                 </label>
               </div>
@@ -73,7 +73,7 @@
       <div class="col-sm">
         <div class="form-group">
             <label>Observação</label>
-            <input class="form-control" type="text" [(ngModel)]="ficha.perg2a" >
+            <input class="form-control" type="text" [(ngModel)]="ficha.perg1a" >
          </div>
      </div>
     </div>
@@ -86,20 +86,20 @@
         <div class="form-group">
             <label>Flacidez</label>
             <div class="form-check">
-                <input class="form-check-input" [(ngModel)]="ficha.perg3" type="radio" name="3" id="3" value="Moderada" checked>
-                <label class="form-check-label" for="3">
+                <input class="form-check-input" [(ngModel)]="ficha.perg3" type="radio" name="3" id="3x" value="Moderada" checked>
+                <label class="form-check-label" for="3x">
                   Moderada - Fase Elástica
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg3" name="3" id="3a" value="Intermediária">
-                <label class="form-check-label" for="3a">
+                <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg3" name="3" id="3ax" value="Intermediária">
+                <label class="form-check-label" for="3ax">
                   Intermediária - Fase Flutuação
                 </label>
               </div>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg3" name="3" id="3b" value="Intermediária">
-                  <label class="form-check-label" for="3b">
+                  <input class="form-check-input" type="radio" [(ngModel)]="ficha.perg3" name="3" id="3bx" value="Avançada">
+                  <label class="form-check-label" for="3bx">
                     Avançada - Fase Plástica
                   </label>
                 </div>

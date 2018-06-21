@@ -1,3 +1,42 @@
-<p>
-  sessoes works!
-</p>
+<div class="row">
+  <div class="col-12">
+      <div class="card">
+                <div class="card card-body">
+
+  <!--tabela-->
+  <div class="container">
+    <div class="row" >
+      <div class="col">
+              <div class="bg-light p-20">
+                      <div class="d-flex">
+                          <div class="align-self-center">
+                              <h3 class="m-b-0">Sessões</h3> Procedimento: <input class="form-control" style="text-transform: uppercase" [(ngModel)]="proced" type="text"></div>
+                          <div class="ml-auto align-self-center">
+                                  <button (click)="incluirSessao()"class="btn btn-info waves-effect waves-light m-t-10" type="button">Incluir</button></div>
+                      </div>
+              </div>
+                  
+      <div class="table-responsive"  > 
+                  <table class="table table-hover earning-box">
+                      <thead>
+                          <tr>
+                              <th>Avaliação</th>                              
+                              <th></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>{{pac.num}}</td>
+                              <td><button [routerLink]="[]" class="btn btn-info waves-effect waves-light m-t-10" type="button">Incluir</button></td>                 
+                          </tr>                    
+                      </tbody>
+                 </table>
+              </div>
+          </div>
+      </div>
+    </div>
+    <!--fim-->
+    </div>
+  </div>
+</div>
+</div>

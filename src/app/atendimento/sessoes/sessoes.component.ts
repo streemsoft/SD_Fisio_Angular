@@ -121,7 +121,7 @@ export class SessoesComponent implements OnInit {
       this.fire.cancelarSessão(x);
       this.toastr.success('Cancelado com sucesso!', 'Atenção!');
     }else{
-
+      this.toastr.warning('Sessão Realizada!', 'Atenção!');
     }
   }
 
