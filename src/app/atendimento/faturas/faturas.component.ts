@@ -1,7 +1,10 @@
 import { SdformatService } from './../../sdformat.service';
 import { AtendimentoFireService } from './../atendimento-fire.service';
 import { Fatura } from './fatura.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
   selector: 'app-faturas',
@@ -13,8 +16,14 @@ export class FaturasComponent implements OnInit {
   recibos:Fatura[] = [];
   select:Fatura;
   controle:boolean = false;
+  valor:any = 0.00;
+  fpag:string = 'Dinheiro';
+  fat:Fatura;
 
-  constructor(private fire : AtendimentoFireService, private sdformat: SdformatService) { }
+  constructor(private fire : AtendimentoFireService, private sdformat: SdformatService, private modalService: NgbModal, private routes: Router, public toastr: ToastsManager,
+    public vcr: ViewContainerRef) { 
+      this.toastr.setRootViewContainerRef(vcr);
+  }
 
   ngOnInit() {
     this.buscarRecibos();
@@ -52,5 +61,26 @@ export class FaturasComponent implements OnInit {
             
       });
   }
+
+  open2(content, x:Fatura) { 
+    this.fat = x;
+    console.log(this.fat)
+    this.modalService.open(content).result.then((result) => {
+      //this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+ 
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
 
 }

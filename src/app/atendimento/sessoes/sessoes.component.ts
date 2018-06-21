@@ -60,8 +60,7 @@ export class SessoesComponent implements OnInit {
               }else{            
                 this.controle = false;
               }       
-                
-                
+                                
             });
           }
            

@@ -24,11 +24,55 @@
                             <td>{{pac.status}}</td>  
                             <td>R$ {{pac.vl_total}}</td>                                                                                  
                             <td>R${{pac.vl_pago}}</td>                                                        
-                            <td><button type="button" class="btn btn-outline-info">Ver</button></td>
+                            <td><button type="button" (click)="open2(content,pac)" class="btn btn-outline-info"><i class="fa fa-check"></i></button></td>
                                                 
                         </tr>                    
                     </tbody>
                 </table>
               </div>
-              
+              <ng-template #content let-c="close" let-d="dismiss">
+                <div class="modal-header"> 
+                  <h3 class="modal-title">Recebimento</h3>
+                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  
+                        <div class="container">
+                                <div class="row">
+                                  <div class="col-sm">
+                                    <div class="form-group">
+                                        <label>Forma de Pagamento</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" [(ngModel)]="fpag"  type="radio" name="6" id="6" value="Dinheiro" checked>
+                                            <label class="form-check-label" for="6">
+                                              Dinheiro
+                                            </label>
+                                          </div>
+                                          <div class="form-check">
+                                            <input class="form-check-input" [(ngModel)]="fpag" type="radio"  name="6" id="6a" value="Cartão">
+                                            <label class="form-check-label" for="6a">
+                                              Cartão
+                                            </label>
+                                          </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm">
+                                    <div class="form-group">
+                                            <label>Valor</label>
+                                            <input [(ngModel)]="valor"  class="form-control" mask='0*.00'>
+                                    </div>
+                                 </div>
+                                </div>
+                              </div>
+
+                           
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-info" (click)="c('Close click')">Cancelar</button>
+                  <button type="button" class="btn btn-outline-info" (click)="pagar()">Salvar</button>
+                </div>
+              </ng-template>
               
