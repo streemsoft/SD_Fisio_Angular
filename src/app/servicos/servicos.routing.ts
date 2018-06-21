@@ -1,3 +1,4 @@
+import { SessoesComponent } from './sessoes/sessoes.component';
 import { PafComponent } from './paf/paf.component';
 import { PacoComponent } from './paco/paco.component';
 import { PacComponent } from './pac/pac.component';
@@ -49,6 +50,14 @@ export const ServicoRoutes: Routes = [
       data: {
         title: 'Avaliação Facial',
         urls: [{title: 'Avaliação',url: '/orto'},{title: 'Facial'}]
+      },
+      canActivate: [AuthguardGuard]
+    },{
+      path: 'avaliacoes',
+      component: SessoesComponent,
+      data: {
+        title: 'Avaliações',
+        urls: [{title: 'Avaliação',url: '/avaliacoes'},{title: 'Lista'}]
       },
       canActivate: [AuthguardGuard]
     }

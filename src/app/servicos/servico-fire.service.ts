@@ -13,6 +13,10 @@ export class ServicoFireService {
     return this.fire.clienteKey.key;
   }
 
+  setProntuarioKey(){
+    this.fire.fichaKey = '_false';
+  }
+
   salvarFichaPAC(ficha:PacModel, sessoes:Sessao[], nome:string, tipo:string){
     var newkey = this.fire.getKey('/PRONTUARIOS/GERAL/');
 
