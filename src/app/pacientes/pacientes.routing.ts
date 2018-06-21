@@ -1,3 +1,4 @@
+import { KeypacGuard } from './../keypac.guard';
 import { BuscaComponent } from './busca/busca.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { Routes } from '@angular/router';
@@ -26,7 +27,7 @@ export const PacientesRoutes: Routes = [
           title: 'Manutenção de Cadastro',
           urls: [{title: 'Paciente',url: '/manutencao'},{title: 'Manutenção'}]
         },
-        canActivate: [AuthguardGuard]
+        canActivate: [KeypacGuard]
       },
       {
         path: 'busca',

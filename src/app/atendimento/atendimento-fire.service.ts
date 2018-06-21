@@ -7,6 +7,10 @@ export class AtendimentoFireService {
 
   constructor(private fire: FirebaseService) { }
 
+  getNomePaciente(){
+    return this.fire.clienteKey.nome;
+  }
+
   //Anamnese -----------------------------------------------
   buscaFicha(){
     return this.fire.selectChild('/ANAMNESE/', this.fire.clienteKey.key);
@@ -50,6 +54,10 @@ export class AtendimentoFireService {
   //Prontuarios -----------------------------------------------
   buscarProntuarios(){
     return this.fire.selectChildEqual('/PRONTUARIOS/GERAL/','key_cliente', this.fire.clienteKey.key);
+  }
+
+  setProntuarioKey(key:string){
+    this.fire.fichaKey = key;
   }
 
 

@@ -1,3 +1,4 @@
+import { AtendimentoFireService } from './../atendimento-fire.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AtendRouterComponent implements OnInit {
 
-  constructor() { }
+  nome:string;
+
+  constructor(private fire: AtendimentoFireService) { }
 
   ngOnInit() {
+    this.getNome();
+  }
+
+  getNome(){
+    this.nome = this.fire.getNomePaciente();
   }
 
 }
