@@ -1,10 +1,11 @@
+import { ToastsManager } from 'ng2-toastr';
 import { Fatura } from './../faturas/fatura.model';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Sessao } from './../../servicos/sessoes/sessoes.model';
 import { SdformatService } from './../../sdformat.service';
 import { AtendimentoFireService } from './../atendimento-fire.service';
 import { SessaoCli } from './../../servicos/sessoes/sessao-cli.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Recibo } from '../recibos/recibo.model';
 
@@ -21,10 +22,15 @@ export class SessoesComponent implements OnInit {
   fpag:string = 'Dinheiro';
   fat:Sessao;
 
-  constructor(private fire : AtendimentoFireService, private sdformat: SdformatService, private modalService: NgbModal, private routes: Router) { }
+  constructor(private fire : AtendimentoFireService, private sdformat: SdformatService,
+     private modalService: NgbModal, private routes: Router, public toastr: ToastsManager,
+     public vcr: ViewContainerRef) { 
+       this.toastr.setRootViewContainerRef(vcr);
+     }
 
   ngOnInit() {
     this.buscarRecibos();
+    
   }
 
   buscarRecibos(){
@@ -113,6 +119,7 @@ export class SessoesComponent implements OnInit {
       x.status = 'Cancelada';
       x.dt_cad = this.sdformat.getDataAtualString();
       this.fire.cancelarSessão(x);
+      this.toastr.success('Cancelado com sucesso!', 'Atenção!');
     }else{
 
     }
@@ -134,7 +141,7 @@ export class SessoesComponent implements OnInit {
           xx.dt_cad = this.sdformat.getDataAtualString();
           this.fire.cancelarSessão(xx);
           this.fire.inserirFatura(a);
-          
+          this.toastr.success('Salvo com sucesso!', 'Atenção!');
 
         }else{
           var x:Recibo = new Recibo();
@@ -147,13 +154,14 @@ export class SessoesComponent implements OnInit {
           xx.dt_cad = this.sdformat.getDataAtualString();
           this.fire.cancelarSessão(xx);
           this.fire.inserirRecivo(x);
+          this.toastr.success('Salvo com sucesso!', 'Atenção!');
         }
       }else{
-        //valor
+        this.toastr.warning('Dados incompletos!', 'Atenção!');
       }
       
     }else{
-
+      this.toastr.warning('Sessão Realizada!', 'Atenção!');
     }
 
   }
