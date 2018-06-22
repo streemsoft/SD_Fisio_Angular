@@ -10,4 +10,8 @@ export class FinanceiroFireService {
     return this.fire.selectChild('', '/BOLETOS/');
   }
 
+  reciboDetail(ini:string, fim:string){
+    return this.fire.selectInterval('/RECIBOS/GERAL/','dt_cad',ini,fim);
+  }
+
 }

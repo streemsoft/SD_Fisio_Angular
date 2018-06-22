@@ -19,6 +19,7 @@ export class SessoesComponent implements OnInit {
   recibos:Sessao[] = [];
   controle:boolean = false;
   valor:any = 0.00;
+  valort:any;
   fpag:string = 'Dinheiro';
   fat:Sessao;
 
