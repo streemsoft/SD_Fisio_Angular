@@ -11,8 +11,8 @@
                             <th>Data</th>
                             <th>Origem</th>
                             <th>Situação</th> 
-                            <th>Total</th>
-                            <th>Pago</th>                                                                
+                            <th>Pago</th>
+                            <th>Pendente</th>                                                                
                             <th></th>                         
                         </tr>
                     </thead>
@@ -22,8 +22,9 @@
                             <td>{{pac.dt_criada}}</td>
                             <td>{{pac.origem}}</td>
                             <td>{{pac.status}}</td>  
+                            <td>R${{pac.vl_pago}}</td>   
                             <td>R$ {{pac.vl_total}}</td>                                                                                  
-                            <td>R${{pac.vl_pago}}</td>                                                        
+                                                                                 
                             <td><button type="button" (click)="open2(content,pac)" class="btn btn-outline-info"><i class="fa fa-check"></i></button></td>
                                                 
                         </tr>                    
@@ -61,7 +62,7 @@
                                   <div class="col-sm">
                                     <div class="form-group">
                                             <label>Valor</label>
-                                            <input [(ngModel)]="valor"  class="form-control" mask='0*.00'>
+                                            <input [(ngModel)]="valor" currencyMask class="form-control">
                                     </div>
                                  </div>
                                 </div>

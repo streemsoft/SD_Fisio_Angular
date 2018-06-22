@@ -5,6 +5,7 @@ import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { ToastsManager } from 'ng2-toastr';
+import { Recibo } from '../recibos/recibo.model';
 
 @Component({
   selector: 'app-faturas',
@@ -27,6 +28,29 @@ export class FaturasComponent implements OnInit {
 
   ngOnInit() {
     this.buscarRecibos();
+  }
+
+  pagar(){
+    if(Number(this.valor)>Number(this.fat.vl_total)){
+      this.toastr.warning('Valor incorreto!', 'Atenção!');
+    }else{
+      this.fat.vl_pago = (Number(this.fat.vl_pago)+Number(this.valor)).toFixed(2);
+      this.fat.vl_total = (Number(this.fat.vl_total)-Number(this.valor)).toFixed(2);
+      this.fat.dt_criada = this.sdformat.convertDateMili(this.fat.dt_criada);
+      if(this.fat.vl_total == '0.00'){
+        this.fat.status = "Paga";
+      }
+      var x:Recibo = new Recibo();
+      x.dt_cad = this.sdformat.getDataAtualMili();
+      x.fpag = this.fpag;
+      x.key_fatura = this.fat.key;
+      x.vl_pago = String(this.valor.toFixed(2));
+      this.fire.atualizaFatura(this.fat);
+      this.fire.inserirRecivo(x);
+      this.toastr.success('Salvo com sucesso!', 'Atenção!');
+      this.valor = 0.00;
+    }
+    
   }
 
   buscarRecibos(){
@@ -64,7 +88,6 @@ export class FaturasComponent implements OnInit {
 
   open2(content, x:Fatura) { 
     this.fat = x;
-    console.log(this.fat)
     this.modalService.open(content).result.then((result) => {
       //this.closeResult = `Closed with: ${result}`;
     }, (reason) => {

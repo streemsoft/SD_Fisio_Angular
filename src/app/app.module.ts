@@ -28,12 +28,25 @@ import { SpinnerComponent } from './shared/spinner.component';
 import { FirebaseService } from './firebase.service';
 import {NgxMaskModule} from 'ngx-mask';
 import { LocalStorageModule } from '@ngx-pwa/local-storage';
+import { CurrencyMaskModule } from "ng2-currency-mask";
+import { CurrencyMaskConfig, CURRENCY_MASK_CONFIG } from "ng2-currency-mask/src/currency-mask.config";
+ 
+export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
+    align: "right",
+    allowNegative: true,
+    decimal: ",",
+    precision: 2,
+    prefix: "R$ ",
+    suffix: "",
+    thousands: "."
+};
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
   wheelSpeed: 2,
-  wheelPropagation: true,
+  wheelPropagation: true
 };
+
 
 @NgModule({
   declarations: [
@@ -55,16 +68,20 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgbModule.forRoot(),  
     PerfectScrollbarModule,
     AppRoutingModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    CurrencyMaskModule
   ],
   providers: [
       {
       provide: PERFECT_SCROLLBAR_CONFIG,
-      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }, FirebaseService, AuthguardGuard, SdformatService, LocalDbService,KeypacGuard],
+  }, FirebaseService, AuthguardGuard, SdformatService, LocalDbService,KeypacGuard,{
+    provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig
+    
+  }],
   bootstrap: [AppComponent]
 })
 

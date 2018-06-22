@@ -82,7 +82,7 @@ export class AtendimentoFireService {
   inserirFatura(x:Fatura){
     var pKey = this.fire.getKey('/FATURAS/GERAL/');
     var _rec = {
-          ket: pKey,
+          key: pKey,
           dt_criada: x.dt_criada,
           origem: x.origem,
           status: x.status,
@@ -99,6 +99,16 @@ export class AtendimentoFireService {
 
     this.fire.insertChild('/FATURAS/GERAL/',_rec, pKey);
     this.fire.insertChild('/FATURAS/CLIENTE/'+this.fire.clienteKey.key+'/',_r, pKey);
+  }
+
+  atualizaFatura(s:Fatura){
+    var _r = {
+      key: s.key,
+      dt_cad: s.dt_criada,
+      status: s.status
+    }
+    this.fire.updateChild('/FATURAS/GERAL/',s);
+    this.fire.updateChild('/FATURAS/CLIENTE/'+this.fire.clienteKey.key+'/',_r);
   }
 
   //Prontuarios -----------------------------------------------

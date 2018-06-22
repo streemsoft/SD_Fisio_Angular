@@ -13,7 +13,7 @@ import { AnamneseComponent } from './anamnese/anamnese.component';
 import { SessoesComponent } from './sessoes/sessoes.component';
 import { FaturasComponent } from './faturas/faturas.component';
 import { RecibosComponent } from './recibos/recibos.component';
-
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 @NgModule({
   imports: [
@@ -22,7 +22,8 @@ import { RecibosComponent } from './recibos/recibos.component';
     FormsModule,
     RouterModule.forChild(AtendimentoRoutes),
     ToastModule.forRoot(),
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    CurrencyMaskModule
   ],
   declarations: [AtendRouterComponent, ProntuariosComponent, AnamneseComponent, SessoesComponent, FaturasComponent, RecibosComponent],
   providers:[AtendimentoFireService]

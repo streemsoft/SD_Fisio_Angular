@@ -70,7 +70,6 @@ export class SessoesComponent implements OnInit {
 
   open2(content, x:Sessao) { 
     this.fat = x;
-    console.log(this.fat)
     this.modalService.open(content).result.then((result) => {
       //this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -135,26 +134,27 @@ export class SessoesComponent implements OnInit {
           a.origem = 'Sessão';
           a.status = 'Aberta';
           a.vl_pago = '0.00';
-          a.vl_total = this.valor;
+          a.vl_total = this.valor.toFixed(2);
           var xx = this.fat;
           xx.status = 'Realizada';
           xx.dt_cad = this.sdformat.getDataAtualString();
           this.fire.cancelarSessão(xx);
           this.fire.inserirFatura(a);
           this.toastr.success('Salvo com sucesso!', 'Atenção!');
-
+          this.valor = 0.00;
         }else{
           var x:Recibo = new Recibo();
           x.dt_cad = this.sdformat.getDataAtualMili();
           x.fpag = this.fpag;
           x.key_fatura = this.fat.key;
-          x.vl_pago = String(this.valor);
+          x.vl_pago = String(this.valor.toFixed(2));
           var xx = this.fat;
           xx.status = 'Realizada';
           xx.dt_cad = this.sdformat.getDataAtualString();
           this.fire.cancelarSessão(xx);
           this.fire.inserirRecivo(x);
           this.toastr.success('Salvo com sucesso!', 'Atenção!');
+          this.valor = 0.00;
         }
       }else{
         this.toastr.warning('Dados incompletos!', 'Atenção!');
