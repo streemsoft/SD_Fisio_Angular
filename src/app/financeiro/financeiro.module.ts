@@ -1,3 +1,4 @@
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { FinanceiroFireService } from './financeiro-fire.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -19,7 +20,8 @@ import { VendasComponent } from './vendas/vendas.component';
     FormsModule,
     RouterModule.forChild(FinanceiroRoutes),
     ToastModule.forRoot(),
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    CurrencyMaskModule
   ],
   declarations: [BoletosComponent, FaturamentoComponent, EstoqueComponent, VendasComponent],
   providers: [FinanceiroFireService]
