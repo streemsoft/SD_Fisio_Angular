@@ -116,7 +116,7 @@ export class SessoesComponent implements OnInit {
     if(ses.status == 'Pendente'){
       var x = ses;
       x.status = 'Cancelada';
-      x.dt_cad = this.sdformat.getDataAtualString();
+      x.dt_cad = this.sdformat.getDataAtualMili();
       this.fire.cancelarSessão(x);
       this.toastr.success('Cancelado com sucesso!', 'Atenção!');
     }else{
@@ -137,7 +137,7 @@ export class SessoesComponent implements OnInit {
           a.vl_total = this.valor.toFixed(2);
           var xx = this.fat;
           xx.status = 'Realizada';
-          xx.dt_cad = this.sdformat.getDataAtualString();
+          xx.dt_cad = this.sdformat.getDataAtualMili();
           this.fire.cancelarSessão(xx);
           this.fire.inserirFatura(a);
           this.toastr.success('Salvo com sucesso!', 'Atenção!');
@@ -150,7 +150,7 @@ export class SessoesComponent implements OnInit {
           x.vl_pago = String(this.valor.toFixed(2));
           var xx = this.fat;
           xx.status = 'Realizada';
-          xx.dt_cad = this.sdformat.getDataAtualString();
+          xx.dt_cad = this.sdformat.getDataAtualMili();
           this.fire.cancelarSessão(xx);
           this.fire.inserirRecivo(x);
           this.toastr.success('Salvo com sucesso!', 'Atenção!');

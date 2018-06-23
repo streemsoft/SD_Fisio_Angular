@@ -9,6 +9,8 @@ import { NgxMaskModule } from 'ngx-mask';
 import { FinanceiroRoutes } from './financeiro.routing';
 import { BoletosComponent } from './boletos/boletos.component';
 import { FaturamentoComponent } from './faturamento/faturamento.component';
+import { EstoqueComponent } from './estoque/estoque.component';
+import { VendasComponent } from './vendas/vendas.component';
 
 @NgModule({
   imports: [
@@ -19,7 +21,7 @@ import { FaturamentoComponent } from './faturamento/faturamento.component';
     ToastModule.forRoot(),
     NgxMaskModule.forRoot()
   ],
-  declarations: [BoletosComponent, FaturamentoComponent],
+  declarations: [BoletosComponent, FaturamentoComponent, EstoqueComponent, VendasComponent],
   providers: [FinanceiroFireService]
 })
 export class FinanceiroModule { }

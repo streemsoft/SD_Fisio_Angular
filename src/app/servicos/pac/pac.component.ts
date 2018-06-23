@@ -1,6 +1,8 @@
+import { ToastsManager } from 'ng2-toastr';
+import { SdformatService } from './../../sdformat.service';
 import { Sessao } from './../sessoes/sessoes.model';
 import { PacModel } from './pac.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { ServicoFireService } from '../servico-fire.service';
 
 @Component({
@@ -15,8 +17,10 @@ export class PacComponent implements OnInit {
   proced:string = 'Acne e Seborreia';
   qtd:any;
 
-  constructor(private fire: ServicoFireService) {
+  constructor(private fire: ServicoFireService, private sdformat: SdformatService, public toastr: ToastsManager,
+    public vcr: ViewContainerRef) {
     this.ficha = new PacModel('');
+    this.toastr.setRootViewContainerRef(vcr);
 
    }
    
@@ -123,7 +127,9 @@ export class PacComponent implements OnInit {
                   temp.nome = item.nome;
                   temp.key_pront = item.key_pront;
                   temp.key_cliente = item.key_cliente;
-                  temp.dt_cad = item.dt_cad;
+                  if(item.dt_cad != ''){
+                    temp.dt_cad = this.sdformat.convertMiliDate(item.dt_cad);
+                  }
                   
                   this.sessoes.push(temp);
               }
@@ -137,9 +143,11 @@ export class PacComponent implements OnInit {
   salvarFicha(){
     if(this.ficha.key == ''){
       this.ficha.key = this.fire.salvarFichaPAC(this.ficha, this.sessoes,'Acne e Seborreia', '1');
+      this.toastr.success('Salvo com sucesso!', 'Atenção!');
     }else{
       this.fire.updateFichaPac(this.ficha, this.sessoes,'Acne e Seborreia', this.qtd, '1');
       this.qtd = this.sessoes.length;
+      this.toastr.success('Salvo com sucesso!', 'Atenção!');
     }
   }
 

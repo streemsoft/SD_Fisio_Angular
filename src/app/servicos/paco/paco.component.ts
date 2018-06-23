@@ -1,7 +1,9 @@
+import { ToastsManager } from 'ng2-toastr';
+import { SdformatService } from './../../sdformat.service';
 import { ServicoFireService } from './../servico-fire.service';
 import { Sessao } from './../sessoes/sessoes.model';
 import { PacModel } from './../pac/pac.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-paco',
@@ -15,9 +17,10 @@ export class PacoComponent implements OnInit {
   proced:string = 'Tratamento Corporal'; 
   qtd:any;
 
-  constructor(private fire: ServicoFireService) {
+  constructor(private fire: ServicoFireService, private sdformat : SdformatService, public toastr: ToastsManager,
+    public vcr: ViewContainerRef) {
     this.ficha = new PacModel('');
-
+    this.toastr.setRootViewContainerRef(vcr);
    }
    
    inicialiaTela(){
@@ -123,23 +126,30 @@ export class PacoComponent implements OnInit {
                   temp.nome = item.nome;
                   temp.key_pront = item.key_pront;
                   temp.key_cliente = item.key_cliente;
-                  temp.dt_cad = item.dt_cad;
-                  
+                  if(item.dt_cad != ''){
+                    temp.dt_cad = this.sdformat.convertMiliDate(item.dt_cad);
+                  }
                   this.sessoes.push(temp);
               }
               this.qtd = this.sessoes.length;
         });
-              
+       
     }
 
+  }
+
+  converterData(dt:any){
+    return this.sdformat.convertMiliDate(dt);
   }
 
   salvarFicha(){
     if(this.ficha.key == ''){
       this.ficha.key = this.fire.salvarFichaPAC(this.ficha, this.sessoes,'Tratamento Corporal', '3');
+      this.toastr.success('Salvo com sucesso!', 'Atenção!');
     }else{
       this.fire.updateFichaPac(this.ficha, this.sessoes,'Tratamento Ortopedia', this.qtd,'3');
       this.qtd = this.sessoes.length;
+      this.toastr.success('Salvo com sucesso!', 'Atenção!');
     }
   }
 }

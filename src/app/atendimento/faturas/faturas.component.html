@@ -19,7 +19,7 @@
                     <tbody>
                         <tr *ngFor="let pac of recibos; let i = index">
                             
-                            <td>{{pac.dt_criada}}</td>
+                            <td>{{converterData(pac.dt_criada)}}</td>
                             <td>{{pac.origem}}</td>
                             <td>{{pac.status}}</td>  
                             <td>R${{pac.vl_pago}}</td>   

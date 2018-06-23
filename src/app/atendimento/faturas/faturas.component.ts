@@ -30,13 +30,18 @@ export class FaturasComponent implements OnInit {
     this.buscarRecibos();
   }
 
+  
+  converterData(dt:any){
+    return this.sdformat.convertMiliDate(dt);
+  }
+
   pagar(){
-    if(Number(this.valor)>Number(this.fat.vl_total)){
+    if(Number(this.valor)>Number(this.fat.vl_total) && Number(this.valor) !== 0.00){
       this.toastr.warning('Valor incorreto!', 'Atenção!');
     }else{
       this.fat.vl_pago = (Number(this.fat.vl_pago)+Number(this.valor)).toFixed(2);
       this.fat.vl_total = (Number(this.fat.vl_total)-Number(this.valor)).toFixed(2);
-      this.fat.dt_criada = this.sdformat.convertDateMili(this.fat.dt_criada);
+      this.fat.dt_criada = this.fat.dt_criada;
       if(this.fat.vl_total == '0.00'){
         this.fat.status = "Paga";
       }
@@ -66,7 +71,7 @@ export class FaturasComponent implements OnInit {
               var obj2 = JSON.parse(json2);
               var temp:Fatura = new Fatura();
               temp.key = obj2.key;
-              temp.dt_criada = this.sdformat.convertMiliDate(obj2.dt_criada);
+              temp.dt_criada = obj2.dt_criada;
               temp.key_cliente = obj2.key_cliente;
               temp.origem = obj2.origem;
               temp.vl_pago = obj2.vl_pago;
