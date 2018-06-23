@@ -16,6 +16,7 @@ export class AnamneseComponent implements OnInit {
 
   constructor(private fire: AtendimentoFireService, private sdformat : SdformatService, public toastr: ToastsManager, 
     public vcr: ViewContainerRef) { 
+      this.toastr.setRootViewContainerRef(vcr);
     this.ficha = new Anamnese('');
   }
 

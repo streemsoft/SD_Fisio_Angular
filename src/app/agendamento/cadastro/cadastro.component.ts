@@ -54,7 +54,7 @@ export class CadastroComponent implements OnInit {
       agen.status = '1';
       this.firea.salvarAgendamento(agen);
       this.listaAgen.push(agen);
-      
+      this.controle = true;
       this.toastr.success('Salvo com sucesso!', 'Atenção!');
       
   }else{

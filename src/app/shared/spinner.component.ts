@@ -32,4 +32,8 @@ export class SpinnerComponent implements OnDestroy {
     ngOnDestroy(): void {
         this.isSpinnerVisible = false;
     }
+
+    tt(){
+        console.log('kkkkk')
+    }
 }

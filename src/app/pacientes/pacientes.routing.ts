@@ -1,3 +1,6 @@
+import { BuscaFinanceiroComponent } from './busca-financeiro/busca-financeiro.component';
+import { BuscaAtendimentoComponent } from './busca-atendimento/busca-atendimento.component';
+import { BuscaAgendComponent } from './busca-agend/busca-agend.component';
 import { KeypacGuard } from './../keypac.guard';
 import { BuscaComponent } from './busca/busca.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
@@ -35,6 +38,33 @@ export const PacientesRoutes: Routes = [
         data: {
           title: 'Buscar Paciente',
           urls: [{title: 'Paciente',url: '/busca'},{title: 'Busca'}]
+        },
+        canActivate: [AuthguardGuard]
+      },
+      {
+        path: 'busca-agend',
+        component: BuscaAgendComponent,
+        data: {
+          title: 'Buscar Paciente',
+          urls: [{title: 'Paciente',url: '/busca-agend'},{title: 'Busca'}]
+        },
+        canActivate: [AuthguardGuard]
+      },
+      {
+        path: 'busca-atendimento',
+        component: BuscaAtendimentoComponent,
+        data: {
+          title: 'Buscar Paciente',
+          urls: [{title: 'Paciente',url: '/busca-atendimento'},{title: 'Busca'}]
+        },
+        canActivate: [AuthguardGuard]
+      },
+      {
+        path: 'busca-financeiro',
+        component: BuscaFinanceiroComponent,
+        data: {
+          title: 'Buscar Paciente',
+          urls: [{title: 'Paciente',url: '/busca-financeiro'},{title: 'Busca'}]
         },
         canActivate: [AuthguardGuard]
       }

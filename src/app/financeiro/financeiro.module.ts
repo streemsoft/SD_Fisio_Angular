@@ -13,6 +13,7 @@ import { FaturamentoComponent } from './faturamento/faturamento.component';
 import { EstoqueComponent } from './estoque/estoque.component';
 import { VendasComponent } from './vendas/vendas.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -23,7 +24,7 @@ import { VendasComponent } from './vendas/vendas.component';
     NgxMaskModule.forRoot(),
     CurrencyMaskModule
   ],
-  declarations: [BoletosComponent, FaturamentoComponent, EstoqueComponent, VendasComponent],
+  declarations: [BoletosComponent, FaturamentoComponent, EstoqueComponent, VendasComponent ],
   providers: [FinanceiroFireService]
 })
 export class FinanceiroModule { }

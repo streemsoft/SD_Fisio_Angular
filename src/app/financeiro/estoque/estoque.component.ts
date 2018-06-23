@@ -64,6 +64,7 @@ export class EstoqueComponent implements OnInit {
     this.toastr.success('Salvo com sucesso!', 'Atenção!');
     this.recibos.push(this.fat2);
     this.fat2 = new Produto();
+    this.controle = true
   }
 
   alterar(){

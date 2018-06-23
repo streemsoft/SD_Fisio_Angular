@@ -17,7 +17,7 @@ export class KeypacGuard implements CanActivate {
       if('_false'!=this.fire.clienteKey){
             return true;
         }else{
-          this.router.navigate(['/pacientes/busca'])
+          this.router.navigate(['/dashboard/dashboard1'])
           return false;
         }
   }

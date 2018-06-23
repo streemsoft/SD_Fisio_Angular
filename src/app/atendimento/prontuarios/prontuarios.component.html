@@ -1,9 +1,11 @@
 <br>
+<button [routerLink]="['/servicos/avaliacoes']" class="btn btn-info waves-effect waves-light m-t-10" type="button">Nova Avaliação</button>
               <div class="container">
                 <div [hidden]="controle" class="alert alert-info" role="alert">
                     Nenhuma Avaliação!
                 </div>
              </div>
+             
               <div class="table-responsive"  [hidden]="!controle" > 
                 <table class="table table-hover earning-box">
                     <thead>

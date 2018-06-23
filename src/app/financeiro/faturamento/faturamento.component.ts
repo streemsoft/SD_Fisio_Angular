@@ -1,5 +1,4 @@
 import { ToastsManager } from 'ng2-toastr';
-import { data } from './../../dashboards/dashboard3/smart-data-table';
 import { SdformatService } from './../../sdformat.service';
 import { FinanceiroFireService } from './../financeiro-fire.service';
 import { Recibo } from './../../atendimento/recibos/recibo.model';

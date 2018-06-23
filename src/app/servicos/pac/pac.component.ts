@@ -107,11 +107,11 @@ export class PacComponent implements OnInit {
     if(dadoz == null){
       var x:Sessao = new Sessao();
 
-      x.key_cliente = this.fire.getClienteKey();
+      /*x.key_cliente = this.fire.getClienteKey();
       x.nome = this.proced.toUpperCase();
       x.status = 'Pendente';
       x.num = String((this.sessoes.length + 1));
-      this.sessoes.push(x);
+      this.sessoes.push(x);*/
     }else{
         dadoz.then(x=>{
           var json2a = JSON.stringify(x);

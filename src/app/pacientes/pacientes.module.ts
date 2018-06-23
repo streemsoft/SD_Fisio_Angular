@@ -10,6 +10,9 @@ import { PacientesRoutes } from './pacientes.routing';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { ManutencaoComponent } from './manutencao/manutencao.component';
 import { BuscaComponent } from './busca/busca.component';
+import { BuscaFinanceiroComponent } from './busca-financeiro/busca-financeiro.component';
+import { BuscaAtendimentoComponent } from './busca-atendimento/busca-atendimento.component';
+import { BuscaAgendComponent } from './busca-agend/busca-agend.component';
 
 @NgModule({
   imports: [
@@ -20,7 +23,7 @@ import { BuscaComponent } from './busca/busca.component';
     ToastModule.forRoot(),
     NgxMaskModule.forRoot()
   ],
-  declarations: [CadastroComponent, ManutencaoComponent, BuscaComponent],
+  declarations: [CadastroComponent, ManutencaoComponent, BuscaComponent, BuscaFinanceiroComponent, BuscaAtendimentoComponent, BuscaAgendComponent],
   providers:[PacientesFireService]
 })
 export class PacientesModule { }
