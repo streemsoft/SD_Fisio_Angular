@@ -98,6 +98,7 @@ export class FinanceiroFireService {
     var v = x;
     var pKey = this.fire.getKey('/VENDAS/');
     v.key = pKey;
+    v.key_cliente = this.fire.clienteKey.key;
     this.fire.insertChild('/VENDAS/',v, pKey);
 
   }

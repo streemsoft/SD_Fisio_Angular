@@ -104,7 +104,8 @@ export class VendasComponent implements OnInit {
 				dt_cad: this.sdformat.getDataAtualMili(),
 				valor:this.valor,
 				fpag: this.fpag,
-				qts: '1'
+        qtd: '1',
+        key_cliente: '0'
     }
     this.fire.inserirVenda(_p);
   }
