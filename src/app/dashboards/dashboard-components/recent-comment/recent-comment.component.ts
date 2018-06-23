@@ -1,3 +1,6 @@
+import { SdformatService } from './../../../sdformat.service';
+import { DashfireService } from './../../dashfire.service';
+import { PacSeletor } from './../../../pacientes/pacseletor.model';
 import { Component} from '@angular/core';
 @Component({
     selector: 'recent-comment',
@@ -5,38 +8,39 @@ import { Component} from '@angular/core';
 })
 export class RecentcommentComponent{ 
 		
-	constructor() {
-		
+	list:PacSeletor[] = []
+	controle:boolean = false;
+	constructor(private fire: DashfireService, private sdformat:SdformatService) {		
 	}
 
-	recentcomments: Object[] = [{
-      	image: 'assets/images/users/1.jpg',
-      	name: 'James Anderson',
-      	comment: 'Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.',    
-      	date: 'April 14, 2016',
-      	status: 'Pending',
-      	labelcolor: 'label-light-info'  
-    }, {
-      	image: 'assets/images/users/2.jpg',
-      	name: 'Michael Jorden',
-      	comment: 'Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.',    
-      	date: 'April 14, 2016',
-      	status: 'Approved',
-      	labelcolor: 'label-light-success'  
-    }, {
-      	image: 'assets/images/users/4.jpg',
-      	name: 'Johnathan Doeting',
-      	comment: 'Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.',    
-      	date: 'April 14, 2016',
-      	status: 'Rejected',
-      	labelcolor: 'label-light-danger'  
-    }, {
-      	image: 'assets/images/users/5.jpg',
-      	name: 'James Anderson',
-      	comment: 'Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.',    
-      	date: 'April 14, 2016',
-      	status: 'Pending',
-      	labelcolor: 'label-light-info'  
-    }];
+	ngOnInit() {
+		this.carregarAgend();
+	  }
+
+	carregarAgend(){
+		this.fire.buscarAniversariantes().then(x=> {
+			var json = JSON.stringify(x.val());
+			var obj = JSON.parse(json);
+			
+			for(let i in obj){
+			  var item = obj[i];
+			  
+			  var temp:PacSeletor = new PacSeletor();
+				temp.key = item.key;
+				temp.nome = item.nome;
+				
+				this.list.push(temp);
+				
+			}
+			
+			if(this.list.length > 0){
+			  this.controle = true;
+			}else{            
+			  this.controle = false;
+			}
+			
+			 
+		});
+	}
 
 }

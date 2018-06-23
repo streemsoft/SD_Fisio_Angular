@@ -1,3 +1,4 @@
+import { DashfireService } from './dashfire.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -56,6 +57,7 @@ import { ActivityComponent } from './dashboard-components/activity-timeline/acti
         FeedsComponent,
         EarningComponent,
         ActivityComponent
-    ]
+    ],
+    providers:[DashfireService]
 })
 export class DashboardModule { }
